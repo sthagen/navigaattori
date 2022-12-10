@@ -2,7 +2,7 @@ import pathlib
 
 import yaml
 
-from navigaattori import DEFAULT_HUB_NAME, DEFAULT_STRUCTURE_NAME, ENCODING, log
+from navigaattori import ENCODING, HUB_NAME, STRUCTURES_KEY, log
 
 
 def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int, object]:
@@ -13,7 +13,7 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
         log.error(message)
         return 1, message
 
-    structures_path = root / DEFAULT_HUB_NAME
+    structures_path = root / HUB_NAME
     if not structures_path.is_file() or not structures_path.stat().st_size:
         message = f'structures file ({structures_path}) does not exist or is empty'
         log.error(message)
@@ -24,6 +24,11 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
 
     if not structures:
         message = f'structures information read from file ({structures_path}) is empty'
+        log.error(message)
+        return 1, message
+
+    if STRUCTURES_KEY not in structures:
+        message = f'structures information is missing the ({STRUCTURES_KEY}) key'
         log.error(message)
         return 1, message
 
