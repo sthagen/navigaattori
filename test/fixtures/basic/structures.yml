@@ -1,2 +1,3 @@
 ---
-
+structures:
+  wun: foo/structure.yml
