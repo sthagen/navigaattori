@@ -22,4 +22,9 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
     with open(structures_path, 'rt', encoding=ENCODING) as handle:
         structures = yaml.safe_load(handle)
 
+    if not structures:
+        message = f'structures information read from file ({structures_path}) is empty'
+        log.error(message)
+        return 1, message
+
     return 0, structures

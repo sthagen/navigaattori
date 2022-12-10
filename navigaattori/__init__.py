@@ -35,6 +35,8 @@ TS_FORMAT_LOG = '%Y-%m-%dT%H:%M:%S'
 TS_FORMAT_PAYLOADS = '%Y-%m-%d %H:%M:%S.%f UTC'
 
 __all__: List[str] = [
+    'DEFAULT_HUB_NAME',
+    'DEFAULT_STRUCTURE_NAME',
     'ENCODING',
     'log',
 ]
