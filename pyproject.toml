@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "navigaattori"
+version = "2022.12.10"
+description = "Navigator (Finnish: navigaattori) guided by conventions."
+readme = "README.md"
+authors = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
+maintainers = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+keywords = ["developer-tools", "validation", "verification"]
+dependencies = [
+    "PyYAML >= 6.0",
+    "foran >= 2022.12.7",
+    "taksonomia >= 2022.12.7",
+    "treelib >= 1.6.1",
+    "typer >= 0.7.0",
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = ["black", "coverage", "flake8", "hypothesis", "mypy", "pytest", "pytest-cov", "pytest-flake8"]
+
+[project.urls]
+Homepage = "https://git.sr.ht/~sthagen/navigaattori"
+Bug-Tracker = "https://todo.sr.ht/~sthagen/navigaattori"
+Documentation = "https://codes.dilettant.life/docs/navigaattori"
+Source-Code = "https://git.sr.ht/~sthagen/navigaattori"
+Test-Coverage = "https://codes.dilettant.life/coverage/navigaattori"
+
+[project.scripts]
+navigaattori = "navigaattori.cli:app"
+
+[tool.setuptools.packages.find]
+include = ["navigaattori", "navigaattori.templates", "example"]
+exclude = ["test*"]
+
+[bdist_wheel]
+universal = true
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ["py310", "py311"]
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+precision = 2
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "@overload",
+]
+omit = [
+    "*/__main__.py",
+]
+
+[tool.isort]
+line_length = 120
+known_first_party = "navigaattori"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+combine_as_imports = true
+
+[tool.mypy]
+strict = true
+implicit_reexport = true
+
+[tool.pytest]
+testpaths = "test"
+filterwarnings = "error"
