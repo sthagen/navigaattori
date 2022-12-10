@@ -1,3 +1,4 @@
+---
 foo_kind:
 - default:
     approvals: approvals.yml
