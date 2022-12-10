@@ -57,7 +57,7 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
     }
 
     for target, spec in targets.items():
-        spec_path = root / spec['dir'] / spec['file']
+        spec_path = root / spec['dir'] / spec['file']  # type: ignore
         if not spec_path.is_file() or not spec_path.stat().st_size:
             log.error(f'spec_path file ({spec_path}) for target ({target}) does not exist or is empty')
             targets[target]['valid'] = False
@@ -66,7 +66,7 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
         if not spec['valid']:
             log.debug(f'skipping invalid target ({target})')
             continue
-        spec_path = root / spec['dir'] / spec['file']
+        spec_path = root / spec['dir'] / spec['file']  # type: ignore
         try:
             with open(spec_path, 'rt', encoding=ENCODING) as handle:
                 structure = yaml.safe_load(handle)
