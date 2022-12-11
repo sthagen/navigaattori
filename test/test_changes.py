@@ -47,7 +47,7 @@ def test_changes():
     assert changes.code_details() == (0, '')
     expected = [
         {'author': 'An Author', 'date': 'PUBLICATIONDATE', 'issue': '01', 'revision': '00', 'summary': 'Initial Issue'},
-        {'author': 'An Author', 'date': '', 'issue': '01', 'revision': '01', 'summary': 'Fixed a nit'}
+        {'author': 'An Author', 'date': '', 'issue': '01', 'revision': '01', 'summary': 'Fixed a nit'},
     ]
     assert changes.container() == expected
     assert changes.is_valid() is True
