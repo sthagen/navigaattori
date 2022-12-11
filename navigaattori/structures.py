@@ -4,10 +4,10 @@ from typing import no_type_check
 
 import yaml
 
+from navigaattori import DEFAULT_STRUCTURE_NAME, ENCODING, HUB_NAME, STRUCTURES_KEY, log
 from navigaattori.approvals import Approvals
 from navigaattori.bind import Binder
 from navigaattori.changes import Changes
-from navigaattori import DEFAULT_STRUCTURE_NAME, ENCODING, HUB_NAME, STRUCTURES_KEY, log
 
 
 @no_type_check
