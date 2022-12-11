@@ -1,6 +1,7 @@
 import pathlib
 
 import navigaattori.api as api
+from navigaattori import HUB_NAME
 
 FIXTURES_ROOT = pathlib.Path('test') / 'fixtures'
 BASIC_FIXTURE = FIXTURES_ROOT / 'basic'
@@ -17,7 +18,7 @@ def test_explore():
 
 
 def test_explore_no_dir():
-    code, stuff = api.explore(BASIC_FIXTURE / api.HUB_NAME, {})
+    code, stuff = api.explore(BASIC_FIXTURE / HUB_NAME, {})
     assert code == 1
     assert stuff
 
@@ -50,26 +51,3 @@ def test_explore_structures_guess():
     code, stuff = api.explore(GUESS_FIXTURE, options={'guess': True})
     assert code == 0
     assert stuff
-
-
-def test_binder_prelim_no_file():
-    binder = api.Binder('no-file', {})
-    assert binder.code_details() == (1, 'binder (no-file) is no file or empty')
-
-
-def test_binder_prelim_empty_file():
-    empty_path = GUESS_FIXTURE / 'foo' / 'empty.md'
-    binder = api.Binder(empty_path, {})
-    assert binder.code_details() == (1, f'binder ({empty_path}) is no file or empty')
-
-
-def test_binder_prelim_spaces_only_file():
-    binder = api.Binder(GUESS_FIXTURE / 'foo' / 'spaces_only.md', {})
-    assert binder.code_details() == (1, 'empty binder?')
-
-
-def test_binder_prelim_pointer_to_folder():
-    rel_pointer = 'folder'
-    binder = api.Binder(GUESS_FIXTURE / 'foo' / 'bind-pointer-to-folder.txt', {})
-    detail = f'resource ({rel_pointer}) is no file (at {GUESS_FIXTURE / "foo" / rel_pointer})'
-    assert binder.code_details() == (1, detail)
