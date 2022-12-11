@@ -22,22 +22,6 @@ class Binder:
         """Load the sequence of resource paths."""
         with open(self.binder_path, 'rt', encoding=ENCODING) as handle:
             self.resource_sequence = [line.strip() for line in handle.readlines() if line.strip()]
-
-    def __init__(self, binder_path: str | pathlib.Path, options: dict[str, bool]):
-        self._options = options
-        self.debug: bool = self._options.get('debug', False)
-        self.guess: bool = self._options.get('guess', False)
-        self.quiet: bool = self._options.get('quiet', False)
-        self.verbose: bool = self._options.get('verbose', False)
-        self.binder_path: pathlib.Path = pathlib.Path(binder_path)
-        self.resource_sequence = []
-        self.state_code = 0
-        self.state_message = ''
-
-        self.binder_has_content()
-
-        if not self.state_code:
-            self.load_binder()
         self.resource_count = len(self.resource_sequence)
         res_sin_plu = 'resource' if self.resource_count == 1 else 'resources'
         if not self.resource_count:
@@ -49,6 +33,40 @@ class Binder:
             for resource in self.resource_sequence:
                 log.info(f'- {resource}')
             log.info(f'binder sequence successfully loaded from ({self.binder_path}):')
+
+    def assess_resources(self) -> None:
+        """Inspect the sequence of resource paths (empty targets are OK)."""
+        for resource in self.resource_sequence:
+            if not (self.binder_base / resource).is_file():
+                self.state_code = 1
+                self.state_message = f'resource ({resource}) is no file (at {self.binder_base / resource})'
+                log.error(self.state_message)
+                continue
+            log.info(f'- resource ({resource}) points to file (at {self.binder_base / resource})')
+
+    def __init__(self, binder_path: str | pathlib.Path, options: dict[str, bool]):
+        self._options = options
+        self.debug: bool = self._options.get('debug', False)
+        self.guess: bool = self._options.get('guess', False)
+        self.quiet: bool = self._options.get('quiet', False)
+        self.verbose: bool = self._options.get('verbose', False)
+        self.binder_path: pathlib.Path = pathlib.Path(binder_path)
+        self.binder_base = self.binder_path.parent
+        self.resource_sequence = []
+        self.resource_count = len(self.resource_sequence)
+        self.state_code = 0
+        self.state_message = ''
+
+        self.binder_has_content()
+
+        if not self.state_code:
+            self.load_binder()
+
+        if not self.state_code:
+            self.assess_resources()
+
+        if not self.state_code:
+            log.info(f'sequence of resources of ({self.binder_path}) is valid')
 
     def is_valid(self) -> bool:
         """Is the model valid?"""
@@ -197,7 +215,7 @@ class Structures:
                                     f' with target type ({target_type}) - resource does not exist or is no file'
                                 )
                                 self.target_types[target_type]['valid'] = False
-                            if erfk == 'bind':
+                            elif erfk == 'bind':
                                 binder_path = self.fs_root / self.target_types[target_type]['dir'] / erv
                                 log.info(f'assessing binder ({binder_path}) yielding:')
                                 code, details = self.assess_binder(binder_path)
@@ -246,7 +264,7 @@ class Structures:
             log.error(self.state_message)
             self.state_code = 1
             return
-        self.state_message = 'Structures appear to be valid (on file system screening level)'
+        self.state_message = 'structures appear to be valid (on file system screening level)'
         log.info(self.state_message)
 
     @no_type_check
@@ -256,11 +274,11 @@ class Structures:
             guessing_path = pathlib.Path('GUESS')
             guessing_path.mkdir(parents=True, exist_ok=True)
 
-            log.info(f'Dumping proposed global expanded file from guessing to ({guessing_path / "tree.yml"}) ...')
+            log.info(f'dumping proposed global expanded file from guessing to ({guessing_path / "tree.yml"}) ...')
             with open(guessing_path / 'tree.yml', 'wt', encoding=ENCODING) as handle:
                 yaml.dump(self.container(complete=True), handle)
 
-            log.info(f'Dumping proposed structures file from guessing to ({guessing_path / HUB_NAME}) ...')
+            log.info(f'dumping proposed structures file from guessing to ({guessing_path / HUB_NAME}) ...')
             with open(guessing_path / HUB_NAME, 'wt', encoding=ENCODING) as handle:
                 yaml.dump(self.structures_map(), handle)
 
