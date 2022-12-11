@@ -50,3 +50,14 @@ def test_explore_structures_guess():
     code, stuff = api.explore(GUESS_FIXTURE, options={'guess': True})
     assert code == 0
     assert stuff
+
+
+def test_binder_prelim_no_file():
+    binder = api.Binder('no-file', {})
+    assert binder.code_details() == (1, 'binder (no-file) is no file or empty')
+
+
+def test_binder_prelim_empty_file():
+    empty_path = GUESS_FIXTURE / 'foo' / 'empty.md'
+    binder = api.Binder(empty_path, {})
+    assert binder.code_details() == (1, f'binder ({empty_path}) is no file or empty')
