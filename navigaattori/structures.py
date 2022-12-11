@@ -4,7 +4,9 @@ from typing import no_type_check
 
 import yaml
 
+from navigaattori.approvals import Approvals
 from navigaattori.bind import Binder
+from navigaattori.changes import Changes
 from navigaattori import DEFAULT_STRUCTURE_NAME, ENCODING, HUB_NAME, STRUCTURES_KEY, log
 
 
@@ -69,8 +71,8 @@ class Structures:
                     log.info(f'- guessed target type ({t_type}) from path ({path})')
         else:
             log.info(f'not guessing but reading target types from ({self.structures_path}) data instead ...')
-            spanning_map = structures[STRUCTURES_KEY]
-            if not isinstance(spanning_map, dict):
+            spanning_map = structures.get(STRUCTURES_KEY, {})
+            if not isinstance(spanning_map, dict) or not spanning_map:
                 self.state_message = (
                     f'the ({STRUCTURES_KEY}) key does not provide a map of target types to structure paths'
                 )
@@ -141,12 +143,34 @@ class Structures:
                                     f' with target type ({target_type}) - resource does not exist or is no file'
                                 )
                                 self.target_types[target_type]['valid'] = False
-                            elif erfk == 'bind':
-                                binder_path = self.fs_root / self.target_types[target_type]['dir'] / erv
-                                log.info(f'assessing binder ({binder_path}) yielding:')
-                                code, details = self.assess_binder(binder_path)
-                                if code:
-                                    self.target_types[target_type]['valid'] = False
+                            else:
+                                if erfk == 'approvals':
+                                    approvals_path = self.fs_root / self.target_types[target_type]['dir'] / erv
+                                    log.info(f'assessing approvals ({approvals_path}) yielding:')
+                                    code, details = self.assess_approvals(approvals_path)
+                                    if code:
+                                        self.target_types[target_type]['valid'] = False
+                                elif erfk == 'bind':
+                                    binder_path = self.fs_root / self.target_types[target_type]['dir'] / erv
+                                    log.info(f'assessing binder ({binder_path}) yielding:')
+                                    code, details = self.assess_binder(binder_path)
+                                    if code:
+                                        self.target_types[target_type]['valid'] = False
+                                elif erfk == 'changes':
+                                    changes_path = self.fs_root / self.target_types[target_type]['dir'] / erv
+                                    log.info(f'assessing changes ({changes_path}) yielding:')
+                                    code, details = self.assess_changes(changes_path)
+                                    if code:
+                                        self.target_types[target_type]['valid'] = False
+
+    @no_type_check
+    def assess_approvals(self, approvals_path: str | pathlib.Path):
+        """Delegate the verification to an instance of the Approvals class."""
+        approvals = Approvals(approvals_path, options=self._options)
+        if approvals.is_valid():
+            return 0, approvals.container()
+
+        return approvals.code_details()
 
     @no_type_check
     def assess_binder(self, binder_path: str | pathlib.Path):
@@ -156,6 +180,15 @@ class Structures:
             return 0, binder.container()
 
         return binder.code_details()
+
+    @no_type_check
+    def assess_changes(self, changes_path: str | pathlib.Path):
+        """Delegate the verification to an instance of the Changes class."""
+        changes = Changes(changes_path, options=self._options)
+        if changes.is_valid():
+            return 0, changes.container()
+
+        return changes.code_details()
 
     def log_assessed_tree(self) -> None:
         """Log out the tree we found."""
@@ -182,6 +215,12 @@ class Structures:
 
     def validate_on_screening_level(self) -> None:
         """Let's wrap this up if any invalid target type is present."""
+        if not self.target_types:
+            self.state_message = f'target types are not present - invalid structures file?'
+            log.error(self.state_message)
+            self.state_code = 1
+            return
+
         if any(not spec['valid'] for spec in self.target_types.values()):
             invalid = sorted(target_type for target_type, spec in self.target_types.items() if not spec['valid'])
             target_sin_plu = 'target type' if len(invalid) == 1 else 'target types'
