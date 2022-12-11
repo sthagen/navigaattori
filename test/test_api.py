@@ -61,3 +61,8 @@ def test_binder_prelim_empty_file():
     empty_path = GUESS_FIXTURE / 'foo' / 'empty.md'
     binder = api.Binder(empty_path, {})
     assert binder.code_details() == (1, f'binder ({empty_path}) is no file or empty')
+
+
+def test_binder_prelim_spaces_only_file():
+    binder = api.Binder(GUESS_FIXTURE / 'foo' / 'spaces_only.md', {})
+    assert binder.code_details() == (1, 'empty binder?')
