@@ -66,3 +66,10 @@ def test_binder_prelim_empty_file():
 def test_binder_prelim_spaces_only_file():
     binder = api.Binder(GUESS_FIXTURE / 'foo' / 'spaces_only.md', {})
     assert binder.code_details() == (1, 'empty binder?')
+
+
+def test_binder_prelim_pointer_to_folder():
+    rel_pointer = 'folder'
+    binder = api.Binder(GUESS_FIXTURE / 'foo' / 'bind-pointer-to-folder.txt', {})
+    detail = f'resource ({rel_pointer}) is no file (at {GUESS_FIXTURE / "foo" / rel_pointer})'
+    assert binder.code_details() == (1, detail)
