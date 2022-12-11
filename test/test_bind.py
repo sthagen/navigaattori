@@ -1,4 +1,3 @@
-
 import pathlib
 
 import navigaattori.bind as bind

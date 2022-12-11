@@ -31,6 +31,16 @@ def test_approvals_prelim_pointer_to_folder():
     assert approvals.code_details() == (1, 'no approvals or wrong file?')
 
 
+def test_approvals_wrong_key():
+    wrong_keys_path = GUESS_FIXTURE / 'foo' / 'approvals-wrong-key.yml'
+    approvals = approve.Approvals(wrong_keys_path, {})
+    detail = (
+        "no map or one of the keys (role, name) missing in {'name': 'A Reviewer', 'rloe': 'Review'}"
+        f" of approvals read from ({wrong_keys_path})?"
+    )
+    assert approvals.code_details() == (1, detail)
+
+
 def test_approvals():
     approvals = approve.Approvals(GUESS_FIXTURE / 'foo' / 'approvals.yml', {})
     assert approvals.code_details() == (0, '')

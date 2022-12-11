@@ -1,0 +1,7 @@
+approvals:
+- name: An Author
+  role: Author
+- name: A Reviewer
+  rloe: Review
+- name: An App Rover
+  role: Approved
