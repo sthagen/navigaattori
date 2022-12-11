@@ -23,6 +23,7 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
         message = f'structures file ({structures_path}) does not exist or is empty'
         if not guess:
             log.error(message)
+            log.info('... you may want to try the --guess option to the explore command to bootstrap a structures file')
             return 1, message
         has_structures_path = False
         log.warning(message)
