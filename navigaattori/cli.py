@@ -58,7 +58,13 @@ Strictness = typer.Option(
     False,
     '-s',
     '--strict',
-    help='Ouput noisy warnings on console (default is False)',
+    help='Output noisy warnings on console (default is False)',
+)
+Guess = typer.Option(
+    False,
+    '-g',
+    '--guess',
+    help='Guess and derive structures from folder tree structure.yml files if possible (default is False)',
 )
 OutputPath = typer.Option(
     '',
@@ -87,7 +93,7 @@ def callback(
 
 
 def _verify_call_vector(
-    doc_root: str, doc_root_pos: str, verbose: bool, strict: bool
+    doc_root: str, doc_root_pos: str, verbose: bool, strict: bool, guess: bool
 ) -> tuple[int, str, str, dict[str, bool]]:
     """DRY"""
     doc = doc_root.strip()
@@ -110,6 +116,7 @@ def _verify_call_vector(
         'quiet': QUIET and not verbose and not strict,
         'strict': strict,
         'verbose': verbose,
+        'guess': guess,
     }
     if verbose:
         logging.getLogger().setLevel(logging.DEBUG)
@@ -122,11 +129,12 @@ def explore(  # noqa
     doc_root: str = DocumentRoot,
     verbose: bool = Verbosity,
     strict: bool = Strictness,
+    guess: bool = Guess,
 ) -> int:
     """
     Verify the structure definition against the file system.
     """
-    code, message, doc, options = _verify_call_vector(doc_root, doc_root_pos, verbose, strict)
+    code, message, doc, options = _verify_call_vector(doc_root, doc_root_pos, verbose, strict, guess)
     if code:
         log.error(message)
         return code

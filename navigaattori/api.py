@@ -4,12 +4,13 @@ from typing import no_type_check
 
 import yaml
 
-from navigaattori import ENCODING, HUB_NAME, STRUCTURES_KEY, log
+from navigaattori import ENCODING, DEFAULT_STRUCTURE_NAME, HUB_NAME, STRUCTURES_KEY, log
 
 
 @no_type_check
 def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int, object]:
     """Later alligator."""
+    guess = options.get('guess', False)
     root = pathlib.Path(doc_root)
     if not root.is_dir():
         message = f'root ({root}) is no directory'
@@ -17,39 +18,62 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
         return 1, message
 
     structures_path = root / HUB_NAME
+    has_structures_path = True
     if not structures_path.is_file() or not structures_path.stat().st_size:
         message = f'structures file ({structures_path}) does not exist or is empty'
-        log.error(message)
-        return 1, message
+        if not guess:
+            log.error(message)
+            return 1, message
+        has_structures_path = False
+        log.warning(message)
 
-    with open(structures_path, 'rt', encoding=ENCODING) as handle:
-        structures = yaml.safe_load(handle)
+    structures = {}
+    if has_structures_path:
+        with open(structures_path, 'rt', encoding=ENCODING) as handle:
+            structures = yaml.safe_load(handle)
 
-    if not structures:
+    if not structures and not guess:
         message = f'structures information read from file ({structures_path}) is empty'
         log.error(message)
         return 1, message
 
-    if STRUCTURES_KEY not in structures:
+    if structures and not guess and STRUCTURES_KEY not in structures:
         message = f'structures information is missing the ({STRUCTURES_KEY}) key'
         log.error(message)
         return 1, message
 
-    spanning_map = structures[STRUCTURES_KEY]
-    if not isinstance(spanning_map, dict):
-        message = f'the ({STRUCTURES_KEY}) key does not provide a map of target types to structure paths'
-        log.error(message)
-        return 1, message
+    if not structures and guess:
+        log.info(f'guessing target types from recursive search for ({DEFAULT_STRUCTURE_NAME}) files ...')
+        target_types = {}
+        for path in root.rglob('*'):
+            if '.git' not in str(path) and str(path).endswith(DEFAULT_STRUCTURE_NAME):
+                t_type = path.parent.name
+                t_rel_dir = str(path.parent).split(f'{root}', 1)[1].lstrip('/')
+                t_file = path.name
+                target_types[t_type] = {
+                    'dir': t_rel_dir,
+                    'file': t_file,
+                    'structure': {},
+                    'valid': True,
+                }
+                log.info(f'- guessed target type ({t_type}) from path ({path})')
+    else:
+        log.info(f'not guessing but reading target types from ({structures_path}) data instead ...')
+        spanning_map = structures[STRUCTURES_KEY]
+        if not isinstance(spanning_map, dict):
+            message = f'the ({STRUCTURES_KEY}) key does not provide a map of target types to structure paths'
+            log.error(message)
+            return 1, message
 
-    target_types = {
-        t: {
-            'dir': str(pathlib.Path(sp).parent),
-            'file': str(pathlib.Path(sp).name),
-            'structure': {},
-            'valid': True,
+        target_types = {
+            t: {
+                'dir': str(pathlib.Path(sp).parent),
+                'file': pathlib.Path(sp).name,
+                'structure': {},
+                'valid': True,
+            }
+            for t, sp in spanning_map.items()
         }
-        for t, sp in spanning_map.items()
-    }
 
     for target_type, spec in target_types.items():
         log.info(f'screening target type ({target_type}) ...')
@@ -139,5 +163,19 @@ def explore(doc_root: str | pathlib.Path, options: dict[str, bool]) -> tuple[int
         message = f'specifications for {target_sin_plu} ({", ".join(invalid)}) {be_sin_plu} invalid'
         log.error(message)
         return 1, message
+
+    if guess and not has_structures_path:
+        guessing_path = pathlib.Path('GUESS')
+        guessing_path.mkdir(parents=True, exist_ok=True)
+
+        log.info(f'Dumping proposed global expanded file from guessing to ({guessing_path / "tree.yml"}) ...')
+        container = {STRUCTURES_KEY: copy.deepcopy(target_types)}
+        with open(guessing_path / 'tree.yml', 'wt', encoding=ENCODING) as handle:
+            yaml.dump(container, handle)
+
+        log.info(f'Dumping proposed structures file from guessing to ({guessing_path / HUB_NAME}) ...')
+        proposal = {STRUCTURES_KEY: {k: f'{v["dir"]}/{v["file"]}' for k, v in target_types.items()}}
+        with open(guessing_path / HUB_NAME, 'wt', encoding=ENCODING) as handle:
+            yaml.dump(proposal, handle)
 
     return 0, target_types
