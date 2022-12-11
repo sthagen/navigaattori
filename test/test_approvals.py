@@ -50,3 +50,4 @@ def test_approvals():
         {'role': 'Approved', 'name': 'An App Rover'}
     ]
     assert approvals.container() == expected
+    assert approvals.is_valid() is True
