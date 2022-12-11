@@ -8,6 +8,63 @@ from navigaattori import DEFAULT_STRUCTURE_NAME, ENCODING, HUB_NAME, STRUCTURES_
 
 
 @no_type_check
+class Binder:
+    """Represent a list of resources to be bound in sequence after resolving all parts."""
+
+    def binder_has_content(self) -> None:
+        """Ensure we received a folder to bootstrap."""
+        if not self.binder_path.is_file() or not self.binder_path.stat().st_size:
+            self.state_code = 1
+            self.state_message = f'binder ({self.binder_path}) is no file or empty'
+            log.error(self.state_message)
+
+    def load_binder(self) -> None:
+        """Load the sequence of resource paths."""
+        with open(self.binder_path, 'rt', encoding=ENCODING) as handle:
+            self.resource_sequence = [line.strip() for line in handle.readlines() if line.strip()]
+
+    def __init__(self, binder_path: str | pathlib.Path, options: dict[str, bool]):
+        self._options = options
+        self.debug: bool = self._options.get('debug', False)
+        self.guess: bool = self._options.get('guess', False)
+        self.quiet: bool = self._options.get('quiet', False)
+        self.verbose: bool = self._options.get('verbose', False)
+        self.binder_path: pathlib.Path = pathlib.Path(binder_path)
+        self.resource_sequence = []
+        self.state_code = 0
+        self.state_message = ''
+
+        self.binder_has_content()
+
+        if not self.state_code:
+            self.load_binder()
+        self.resource_count = len(self.resource_sequence)
+        res_sin_plu = 'resource' if self.resource_count == 1 else 'resources'
+        if not self.resource_count:
+            self.state_code = 1
+            self.state_message = 'empty binder?'
+            log.error(f'binder sequence failed to load any entry from ({self.binder_path})')
+        else:
+            log.info(f'binder sequence loaded {self.resource_count} {res_sin_plu} from ({self.binder_path}):')
+            for resource in self.resource_sequence:
+                log.info(f'- {resource}')
+            log.info(f'binder sequence successfully loaded from ({self.binder_path}):')
+
+    def is_valid(self) -> bool:
+        """Is the model valid?"""
+        return not self.state_code
+
+    def code_details(self) -> tuple[int, str]:
+        """Return an ordered pair of state code and message"""
+        return self.state_code, self.state_message
+
+    @no_type_check
+    def container(self):
+        """Return the resource sequence."""
+        return copy.deepcopy(self.resource_sequence)
+
+
+@no_type_check
 class Structures:
     """Model for structures as top level information to navigate all target types."""
 
@@ -140,6 +197,21 @@ class Structures:
                                     f' with target type ({target_type}) - resource does not exist or is no file'
                                 )
                                 self.target_types[target_type]['valid'] = False
+                            if erfk == 'bind':
+                                binder_path = self.fs_root / self.target_types[target_type]['dir'] / erv
+                                log.info(f'assessing binder ({binder_path}) yielding:')
+                                code, details = self.assess_binder(binder_path)
+                                if code:
+                                    self.target_types[target_type]['valid'] = False
+
+    @no_type_check
+    def assess_binder(self, binder_path: str | pathlib.Path):
+        """Delegate the verification to an instance of the Binder class."""
+        binder = Binder(binder_path, options=self._options)
+        if binder.is_valid():
+            return 0, binder.container()
+
+        return binder.code_details()
 
     def log_assessed_tree(self) -> None:
         """Log out the tree we found."""
@@ -194,7 +266,11 @@ class Structures:
 
     @no_type_check
     def __init__(self, doc_root: str | pathlib.Path, options: dict[str, bool]):
-        self.guess: bool = options.get('guess', False)
+        self._options = options
+        self.debug: bool = self._options.get('debug', False)
+        self.guess: bool = self._options.get('guess', False)
+        self.quiet: bool = self._options.get('quiet', False)
+        self.verbose: bool = self._options.get('verbose', False)
         self.fs_root: pathlib.Path = pathlib.Path(doc_root)
         self.structures_path: pathlib.Path = self.fs_root / HUB_NAME
         self.has_structures_path = True
@@ -244,7 +320,7 @@ class Structures:
         return self.state_code, self.state_message
 
     @no_type_check
-    def container(self, complete=True):
+    def container(self, complete=False):
         """Return either the complete assessed tree or only the target types map."""
         return {STRUCTURES_KEY: copy.deepcopy(self.target_types)} if complete else copy.deepcopy(self.target_types)
 
