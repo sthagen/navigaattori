@@ -7,6 +7,7 @@ BASIC_FIXTURE = FIXTURES_ROOT / 'basic'
 EMPTY_FIXTURE = FIXTURES_ROOT / 'empty'
 NO_KEY_FIXTURE = FIXTURES_ROOT / 'missing-key'
 KEY_NO_MAP_FIXTURE = FIXTURES_ROOT / 'key-no-map'
+GUESS_FIXTURE = FIXTURES_ROOT / 'guess'
 
 
 def test_explore():
@@ -42,4 +43,10 @@ def test_explore_structures_missing_key():
 def test_explore_structures_key_no_map():
     code, stuff = api.explore(KEY_NO_MAP_FIXTURE, {})
     assert code == 1
+    assert stuff
+
+
+def test_explore_structures_guess():
+    code, stuff = api.explore(GUESS_FIXTURE, options={'guess': True})
+    assert code == 0
     assert stuff
