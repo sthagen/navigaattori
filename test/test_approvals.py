@@ -47,7 +47,7 @@ def test_approvals():
     expected = [
         {'role': 'Author', 'name': 'An Author'},
         {'role': 'Review', 'name': 'A Reviewer'},
-        {'role': 'Approved', 'name': 'An App Rover'}
+        {'role': 'Approved', 'name': 'An App Rover'},
     ]
     assert approvals.container() == expected
     assert approvals.is_valid() is True
