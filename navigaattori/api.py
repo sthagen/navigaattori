@@ -4,7 +4,7 @@ from typing import no_type_check
 
 import yaml
 
-from navigaattori import ENCODING, DEFAULT_STRUCTURE_NAME, HUB_NAME, STRUCTURES_KEY, log
+from navigaattori import DEFAULT_STRUCTURE_NAME, ENCODING, HUB_NAME, STRUCTURES_KEY, log
 
 
 @no_type_check
