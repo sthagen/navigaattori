@@ -1,0 +1,11 @@
+---
+foo_kind:
+- default:
+    approvals: approvals.yml
+    bind: bind.txt
+    changes: changes.yml
+    meta: meta-default.yml
+    render: true
+    formats:
+    - html
+    - pdf
