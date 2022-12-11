@@ -45,7 +45,7 @@ class Approvals:
 
         self.approvals_sequence = [{'role': entry['role'], 'name': entry['name']} for entry in peeled]
         self.approvals_count = len(self.approvals_sequence)
-        approval_sin_plu = 'approval' if self.approvals_count == 1 else 'approval'
+        approval_sin_plu = 'approval' if self.approvals_count == 1 else 'approvals'
         log.info(f'approvals sequence loaded {self.approvals_count} {approval_sin_plu} from ({self.approvals_path}):')
         for entry in self.approvals_sequence:
             log.info(f'- {entry}')
