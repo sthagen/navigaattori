@@ -68,7 +68,7 @@ baseline:
 
 .PHONY: clocal
 clocal:
-	@rm -rf example/deep/render
+	@rm -rf GUESS
 	@rm -f inventory.*
 
 .PHONY: clean
