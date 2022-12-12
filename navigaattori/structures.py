@@ -260,16 +260,19 @@ class Structures:
     @no_type_check
     def __init__(self, doc_root: str | pathlib.Path, options: dict[str, bool]):
         self._options = options
-        self.debug: bool = self._options.get('debug', False)
-        self.guess: bool = self._options.get('guess', False)
         self.quiet: bool = self._options.get('quiet', False)
+        self.strict: bool = self._options.get('strict', False)
         self.verbose: bool = self._options.get('verbose', False)
+        self.guess: bool = self._options.get('guess', False)
 
         if self.quiet:
             logging.getLogger().setLevel(logging.ERROR)
-        elif self.verbose:
+        elif self.strict:
             logging.getLogger().setLevel(logging.DEBUG)
-            log.debug('- set logging level to debug (verbose mode)')
+            log.debug('- set logging level to debug (strict mode)')
+        elif self.verbose:
+            logging.getLogger().setLevel(logging.INFO)
+            log.debug('- set logging level to info (verbose mode - the default)')
 
         self.excludes_csl: str = self._options.get('excludes', '.git/,render/pdf/')
         self.excludes: tuple[str, ...] = tuple()

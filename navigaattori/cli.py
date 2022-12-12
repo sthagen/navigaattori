@@ -151,7 +151,7 @@ def explore(  # noqa
     code, message, doc, options = _verify_call_vector(doc_root, doc_root_pos, verbose, strict, guess, excludes)
     if code:
         log.error(message)
-        return code
+        return sys.exit(code)
 
     code, _ = api.explore(doc_root=doc, options=options)
     return sys.exit(code)
