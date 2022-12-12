@@ -17,6 +17,7 @@ from navigaattori import (
 from navigaattori.approvals import Approvals
 from navigaattori.bind import Binder
 from navigaattori.changes import Changes
+from navigaattori.meta import Meta
 
 
 @no_type_check
@@ -172,6 +173,12 @@ class Structures:
                                     code, details = self.assess_changes(changes_path)
                                     if code:
                                         self.target_types[target_type]['valid'] = False
+                                elif erfk == 'meta':
+                                    meta_top_path = self.fs_root / self.target_types[target_type]['dir'] / erv
+                                    log.info(f'assessing changes ({meta_top_path}) yielding:')
+                                    code, details = self.assess_meta(meta_top_path)
+                                    if code:
+                                        self.target_types[target_type]['valid'] = False
 
     @no_type_check
     def assess_approvals(self, approvals_path: str | pathlib.Path):
@@ -199,6 +206,15 @@ class Structures:
             return 0, changes.container()
 
         return changes.code_details()
+
+    @no_type_check
+    def assess_meta(self, meta_top_path: str | pathlib.Path):
+        """Delegate the verification to an instance of the Meta class."""
+        meta = Meta(meta_top_path, options=self._options)
+        if meta.is_valid():
+            return 0, meta.container()
+
+        return meta.code_details()
 
     def log_assessed_tree(self) -> None:
         """Log out the tree we found."""

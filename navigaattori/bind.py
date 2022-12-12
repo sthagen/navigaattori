@@ -44,10 +44,10 @@ class Binder:
 
     def __init__(self, binder_path: str | pathlib.Path, options: dict[str, bool]):
         self._options = options
-        self.debug: bool = self._options.get('debug', False)
-        self.guess: bool = self._options.get('guess', False)
         self.quiet: bool = self._options.get('quiet', False)
+        self.strict: bool = self._options.get('strict', False)
         self.verbose: bool = self._options.get('verbose', False)
+        self.guess: bool = self._options.get('guess', False)
         self.binder_path: pathlib.Path = pathlib.Path(binder_path)
         self.binder_base = self.binder_path.parent
         self.resource_sequence = []

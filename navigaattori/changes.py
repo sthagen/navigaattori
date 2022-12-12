@@ -62,10 +62,10 @@ class Changes:
 
     def __init__(self, changes_path: str | pathlib.Path, options: dict[str, bool]):
         self._options = options
-        self.debug: bool = self._options.get('debug', False)
-        self.guess: bool = self._options.get('guess', False)
         self.quiet: bool = self._options.get('quiet', False)
+        self.strict: bool = self._options.get('strict', False)
         self.verbose: bool = self._options.get('verbose', False)
+        self.guess: bool = self._options.get('guess', False)
         self.changes_path: pathlib.Path = pathlib.Path(changes_path)
         self.changes_sequence = []
         self.changes_count = len(self.changes_sequence)
