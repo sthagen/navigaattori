@@ -141,4 +141,4 @@ current-bandit.json
 
 # Local specific ignores
 inventory.*
-GUESS
+GUESSED_STRUCTURES_FOLDER_NAME
