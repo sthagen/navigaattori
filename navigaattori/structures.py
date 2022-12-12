@@ -272,7 +272,7 @@ class Structures:
             log.debug('- set logging level to debug (verbose mode)')
 
         self.excludes_csl: str = self._options.get('excludes', '.git/,render/pdf/')
-        self.excludes = parse_csl('.git/,render/pdf/')
+        self.excludes: tuple[str, ...] = tuple()
         if self.excludes_csl.strip():
             self.excludes = parse_csl(self.excludes_csl)
             excl_sin_plu = f'partial{"" if len(self.excludes) == 1 else "s"}'

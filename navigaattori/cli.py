@@ -106,7 +106,7 @@ def _verify_call_vector(
     strict: bool,
     guess: bool,
     excludes: str,
-) -> tuple[int, str, str, dict[str, bool]]:
+) -> tuple[int, str, str, dict[str, object]]:
     """DRY"""
     doc = doc_root.strip()
     if not doc and doc_root_pos:
