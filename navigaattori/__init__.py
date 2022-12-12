@@ -15,6 +15,7 @@ __version_info__ = tuple(
 APP_NAME = 'Navigator (Finnish: navigaattori) guided by conventions.'
 APP_ALIAS = 'navigaattori'
 APP_ENV = 'NAVIGAATTORI'
+COMMA = ','
 DEBUG = bool(os.getenv(f'{APP_ENV}_DEBUG', ''))
 VERBOSE = bool(os.getenv(f'{APP_ENV}_VERBOSE', ''))
 QUIET = False
@@ -23,6 +24,7 @@ ENCODING = 'utf-8'
 ENCODING_ERRORS_POLICY = 'ignore'
 DEFAULT_CONFIG_NAME = '.navigaattori.json'
 DEFAULT_LF_ONLY = 'YES'
+GUESSED_STRUCTURES_FOLDER_NAME = 'GUESSED_STRUCTURES'
 STRUCTURES_KEY = 'structures'
 HUB_NAME = f'{STRUCTURES_KEY}.yml'
 DEFAULT_STRUCTURE_NAME = 'structure.yml'
@@ -38,10 +40,17 @@ TS_FORMAT_PAYLOADS = '%Y-%m-%d %H:%M:%S.%f UTC'
 __all__: List[str] = [
     'DEFAULT_STRUCTURE_NAME',
     'ENCODING',
+    'GUESSED_STRUCTURES_FOLDER_NAME',
     'HUB_NAME',
     'STRUCTURES_KEY',
     'log',
+    'parse_csl',
 ]
+
+
+def parse_csl(csl: str) -> List[str]:
+    """DRY."""
+    return [fmt.strip().lower() for fmt in csl.split(COMMA) if fmt.strip()]
 
 
 @no_type_check

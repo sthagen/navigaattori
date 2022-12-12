@@ -1,10 +1,19 @@
 import copy
+import logging
 import pathlib
 from typing import no_type_check
 
 import yaml
 
-from navigaattori import DEFAULT_STRUCTURE_NAME, ENCODING, HUB_NAME, STRUCTURES_KEY, log
+from navigaattori import (
+    DEFAULT_STRUCTURE_NAME,
+    ENCODING,
+    GUESSED_STRUCTURES_FOLDER_NAME,
+    HUB_NAME,
+    STRUCTURES_KEY,
+    log,
+    parse_csl,
+)
 from navigaattori.approvals import Approvals
 from navigaattori.bind import Binder
 from navigaattori.changes import Changes
@@ -58,17 +67,18 @@ class Structures:
             log.info(f'guessing target types from recursive search for ({DEFAULT_STRUCTURE_NAME}) files ...')
             self.target_types = {}
             for path in self.fs_root.rglob('*'):
-                if '.git' not in str(path) and str(path).endswith(DEFAULT_STRUCTURE_NAME):
-                    t_type = path.parent.name
-                    t_rel_dir = str(path.parent).split(f'{self.fs_root}', 1)[1].lstrip('/')
-                    t_file = path.name
-                    self.target_types[t_type] = {
-                        'dir': t_rel_dir,
-                        'file': t_file,
-                        'structure': {},
-                        'valid': True,
-                    }
-                    log.info(f'- guessed target type ({t_type}) from path ({path})')
+                if str(path).endswith(DEFAULT_STRUCTURE_NAME):
+                    if all((partial not in str(path) for partial in self.excludes)):
+                        t_type = path.parent.name
+                        t_rel_dir = str(path.parent).split(f'{self.fs_root}', 1)[1].lstrip('/')
+                        t_file = path.name
+                        self.target_types[t_type] = {
+                            'dir': t_rel_dir,
+                            'file': t_file,
+                            'structure': {},
+                            'valid': True,
+                        }
+                        log.info(f'- guessed target type ({t_type}) from path ({path})')
         else:
             log.info(f'not guessing but reading target types from ({self.structures_path}) data instead ...')
             spanning_map = structures.get(STRUCTURES_KEY, {})
@@ -236,7 +246,7 @@ class Structures:
     def dump_guesses(self) -> None:
         """In case we are in guess mode and there is no existing structures file - dump what we suggest."""
         if self.guess and not self.has_structures_path:
-            guessing_path = pathlib.Path('GUESS')
+            guessing_path = pathlib.Path(GUESSED_STRUCTURES_FOLDER_NAME)
             guessing_path.mkdir(parents=True, exist_ok=True)
 
             log.info(f'dumping proposed global expanded file from guessing to ({guessing_path / "tree.yml"}) ...')
@@ -254,6 +264,20 @@ class Structures:
         self.guess: bool = self._options.get('guess', False)
         self.quiet: bool = self._options.get('quiet', False)
         self.verbose: bool = self._options.get('verbose', False)
+
+        if self.quiet:
+            logging.getLogger().setLevel(logging.ERROR)
+        elif self.verbose:
+            logging.getLogger().setLevel(logging.DEBUG)
+            log.debug('- set logging level to debug (verbose mode)')
+
+        self.excludes_csl: str = self._options.get('excludes', '.git/,render/pdf/')
+        self.excludes = parse_csl('.git/,render/pdf/')
+        if self.excludes_csl.strip():
+            self.excludes = parse_csl(self.excludes_csl)
+            excl_sin_plu = f'partial{"" if len(self.excludes) == 1 else "s"}'
+            log.info(f'- will exclude ({", ".join(self.excludes)}) path {excl_sin_plu}')
+
         self.fs_root: pathlib.Path = pathlib.Path(doc_root)
         self.structures_path: pathlib.Path = self.fs_root / HUB_NAME
         self.has_structures_path = True

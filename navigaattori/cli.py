@@ -16,6 +16,7 @@ from navigaattori import (
     VERBOSE,
     __version__ as APP_VERSION,
     log,
+    parse_csl,
 )
 
 app = typer.Typer(
@@ -72,6 +73,12 @@ OutputPath = typer.Option(
     '--output-path',
     help='Path to output unambiguous content to - like when ejecting a template',
 )
+Excludes = typer.Option(
+    '.git/,render/pdf/',
+    '-x',
+    '--excludes',
+    help='comma separated list of values to exclude paths\ncontaining the substring (default: .git/,render/pdf/)',
+)
 
 
 @app.callback(invoke_without_command=True)
@@ -93,7 +100,12 @@ def callback(
 
 
 def _verify_call_vector(
-    doc_root: str, doc_root_pos: str, verbose: bool, strict: bool, guess: bool
+    doc_root: str,
+    doc_root_pos: str,
+    verbose: bool,
+    strict: bool,
+    guess: bool,
+    excludes: str,
 ) -> tuple[int, str, str, dict[str, bool]]:
     """DRY"""
     doc = doc_root.strip()
@@ -117,6 +129,7 @@ def _verify_call_vector(
         'strict': strict,
         'verbose': verbose,
         'guess': guess,
+        'excludes': excludes,
     }
     if verbose:
         logging.getLogger().setLevel(logging.DEBUG)
@@ -130,11 +143,12 @@ def explore(  # noqa
     verbose: bool = Verbosity,
     strict: bool = Strictness,
     guess: bool = Guess,
+    excludes: str = Excludes,
 ) -> int:
     """
-    Verify the structure definition against the file system.
+    Explore the structures definition tree in the file system.
     """
-    code, message, doc, options = _verify_call_vector(doc_root, doc_root_pos, verbose, strict, guess)
+    code, message, doc, options = _verify_call_vector(doc_root, doc_root_pos, verbose, strict, guess, excludes)
     if code:
         log.error(message)
         return code
