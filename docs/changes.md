@@ -3,6 +3,9 @@
 ## 2022.12.12
 
 * Added concept and option of excluding path parts from exploring
+* Added initial SMVP implementation of meta parsing
+* Fixed verbosity handling
+* Fixed return code when doc root argument is detected as missing or pointing to non-existing place
 
 ## 2022.12.11
 
