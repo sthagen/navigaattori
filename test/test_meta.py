@@ -1,4 +1,3 @@
-
 import pathlib
 
 import navigaattori.meta as meta
@@ -29,14 +28,13 @@ def test_meta_prelim_spaces_only_file():
 
 def test_meta_prelim_pointer_to_folder():
     metadata = meta.Meta(GUESS_FIXTURE / 'foo' / 'bind-pointer-to-folder.txt', {})
-    assert metadata.code_details() == (1, 'no metadata or wrong file?')
+    assert metadata.code_details() == (1, 'missing expected top level key document - no metadata or wrong file?')
 
 
 def test_meta_wrong_key():
     wrong_keys_path = GUESS_FIXTURE / 'foo' / 'meta-default-wrong-top-level-key.yml'
     metadata = meta.Meta(wrong_keys_path, {})
-    detail = 'missing expected top level key document - no metadata or wrong file?'
-    assert metadata.code_details() == (1, detail)
+    assert metadata.code_details() == (1, 'missing expected top level key document - no metadata or wrong file?')
 
 
 def test_meta():
