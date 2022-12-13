@@ -7,6 +7,7 @@ import sys
 import typer
 
 import navigaattori.api as api
+import navigaattori.eject as eje
 from navigaattori import (
     APP_ALIAS,
     APP_NAME,
@@ -155,6 +156,17 @@ def explore(  # noqa
 
     code, _ = api.explore(doc_root=doc, options=options)
     return sys.exit(code)
+
+
+@app.command('eject')
+def eject(  # noqa
+    that: str = typer.Argument(''),
+    out: str = OutputPath,
+) -> int:
+    """
+    Eject a template. Enter unique part to retrieve, any unknown word to obtain the list of known templates.
+    """
+    return sys.exit(eje.this(thing=that, out=out))
 
 
 @app.command('version')
