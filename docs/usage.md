@@ -75,6 +75,46 @@ I [...]:   + valid -> False
 E [...]: specifications for target types (bar, wun) are invalid
 ```
 
+using different excludes than the defaults `.git/` and `render/pdf/`:
+
+```console
+❯ navigaattori explore basic --excludes foo,bar 2>&1 | cut -c34- | sed "s/NAVIGAATTORI/.../g; s/WARNING/W/g; s/ERROR/E/g; s/INFO/I/g;"
+I [...]: - will exclude (foo, bar) path partials
+I [...]: not guessing but reading target types from (basic/structures.yml) data instead ...
+I [...]: screening target type (wun) ...
+I [...]: screening target type (bar) ...
+E [...]: spec_path file (basic/bar/structure.yml) for target type (bar) does not exist or is empty
+I [...]: assessing target type (wun) ...
+I [...]: - assessing target (foo_kind) with target type (wun) ...
+E [...]:   + invalid (approvals) resource (approvals.yml) for facet (default) of target (foo_kind) with target type (wun) - resource does not exist or is no file
+E [...]:   + invalid (bind) resource (bind.txt) for facet (default) of target (foo_kind) with target type (wun) - resource does not exist or is no file
+E [...]:   + invalid (changes) resource (changes.yml) for facet (default) of target (foo_kind) with target type (wun) - resource does not exist or is no file
+E [...]:   + invalid (meta) resource (meta-default.yml) for facet (default) of target (foo_kind) with target type (wun) - resource does not exist or is no file
+I [...]: skipping invalid target (bar)
+I [...]: reporting target type (wun) ...
+I [...]: - target_type='wun':
+I [...]:   + dir -> foo
+I [...]:   + file -> structure.yml
+I [...]:   + structure =>
+I [...]:     * foo_kind =>
+I [...]:       - default =>
+I [...]:         + approvals -> approvals.yml
+I [...]:         + bind -> bind.txt
+I [...]:         + changes -> changes.yml
+I [...]:         + meta -> meta-default.yml
+I [...]:         + render -> True
+I [...]:         + formats -> ['html', 'pdf']
+I [...]:         + options -> None
+I [...]:   + valid -> False
+I [...]: reporting target type (bar) ...
+I [...]: - target_type='bar':
+I [...]:   + dir -> bar
+I [...]:   + file -> structure.yml
+I [...]:   + structure -> {}
+I [...]:   + valid -> False
+E [...]: specifications for target types (bar, wun) are invalid
+```
+
 missing structures file (the folder name lowercase guess is maybe not optimal ...):
 
 ```console
