@@ -13,6 +13,7 @@ Options:
   -h, --help     Show this message and exit.
 
 Commands:
+  eject    Eject a template.
   explore  Explore the structures definition tree in the file system.
   version  Display the application version and exit.
 ```
@@ -20,7 +21,7 @@ Commands:
 
 ```console
 ❯ navigaattori version
-Navigator (Finnish: navigaattori) guided by conventions. version 2022.12.12+parent.36405dcb
+Navigator (Finnish: navigaattori) guided by conventions. version 2022.12.13+parent.ff7049ef
 ```
 
 ### Version - Help
@@ -156,6 +157,8 @@ I [...]: - {'author': 'An Author', 'date': '', 'issue': '01', 'revision': '01', 
 I [...]: changes sequence successfully loaded from (guess/foo/changes.yml):
 I [...]: sequence of changes from (guess/foo/changes.yml) is valid
 I [...]: assessing changes (guess/foo/meta-default.yml) yielding:
+I [...]: loading liitos vocabulary from (templates/liitos_vocabulary.yml) ...
+I [...]: dumping liitos vocabulary to (liitos-vocabulary.yml) ...
 I [...]: top level metadata successfully loaded from (guess/foo/meta-default.yml):
 I [...]: reporting current metadata starting from (guess/foo/meta-default.yml) ...
 I [...]: - document =>
@@ -203,6 +206,8 @@ I [...]:     * main_font -> ITCFranklinGothicStd-Book
 I [...]:     * fixed_font_package -> sourcecodepro
 I [...]:     * code_fontsize -> \scriptsize
 I [...]:     * chosen_logo -> /opt/logo/liitos-logo.png
+I [...]: verifying metadata starting from (guess/foo/meta-default.yml) uses only tokens from the liitos vocabulary ...
+I [...]: metadata successfully verified 32 tokens (82.05% of vocabulary)
 I [...]: metadata from (guess/foo/meta-default.yml) seems to be valid
 I [...]: reporting target type (foo) ...
 I [...]: - target_type='foo':
@@ -278,4 +283,258 @@ Options:
                             containing the substring (default:
                             .git/,render/pdf/)  [default: .git/,render/pdf/]
   -h, --help                Show this message and exit.
+```
+
+## Eject
+
+```console
+❯ navigaattori eject
+2022-12-13T20:58:36.347693+00:00 ERROR [NAVIGAATTORI]: eject of template with no name requested
+2022-12-13T20:58:36.348226+00:00 INFO [NAVIGAATTORI]: templates known: (liitos-vocabulary-yaml)
+```
+
+indicating the source:
+
+```console
+❯ navigaattori eject l
+---
+slot_marker: VALUE.SLOT
+targets:
+  title:
+    eol_marker: '%%_PATCH_%_MAIN_%_TITLE_%%'
+    default: null
+    scope: metadata.tex.in
+  sub_title:
+    eol_marker: '%%_PATCH_%_SUB_%_TITLE_%%'
+    default: ' '
+    scope: metadata.tex.in
+  header_title:
+    eol_marker: '%%_PATCH_%_HEADER_%_TITLE_%%'
+    default: null
+    scope: metadata.tex.in
+  header_type:
+    eol_marker: '%%_PATCH_%_TYPE_%%'
+    default: Engineering Document
+    scope: metadata.tex.in
+  header_id:
+    eol_marker: '%%_PATCH_%_ID_%%'
+    default: null
+    scope: metadata.tex.in
+  header_id_label:
+    eol_marker: '%%_PATCH_%_ID_%_LABEL_%%'
+    default: 'Doc. ID:'
+    scope: metadata.tex.in
+  header_id_show:
+    eol_marker: '%%_PATCH_%_ID_%_SHOW_%%'  # dummy to support inversion
+    default: true
+    scope: metadata.tex.in
+  issue:
+    eol_marker: '%%_PATCH_%_ISSUE_%%'
+    default: '01'
+    scope: metadata.tex.in
+  revision:
+    eol_marker: '%%_PATCH_%_REVISION_%%'
+    default: '00'
+    scope: metadata.tex.in
+  header_issue_revision_combined:
+    eol_marker: '%%_PATCH_%_ISSUE_%_REVISION_%_COMBINED_%%'
+    default: Iss \theMetaIssCode, Rev \theMetaRevCode
+    scope: metadata.tex.in
+  header_issue_revision_combined_label:
+    eol_marker: '%%_PATCH_%_ISSUE_%_REVISION_%_COMBINED_%_LABEL_%%'
+    default: 'Issue, Revision:'
+    scope: metadata.tex.in
+  header_issue_revision_combined_show:
+    eol_marker: '%%_PATCH_%_ISSUE_%_REVISION_%_COMBINED_%_SHOW_%%'  # dummy to support inversion
+    default: true
+    scope: metadata.tex.in
+  header_date:
+    eol_marker: '%%_PATCH_%_DATE_%%'
+    default: null
+    scope: metadata.tex.in
+  header_date_label:
+    eol_marker: '%%_PATCH_%_DATE_%_LABEL%%'
+    default: 'Date:'
+    scope: metadata.tex.in
+  header_date_enable_auto:
+    eol_marker: '%%_PATCH_%_DATE_%_ENABLE_%_AUTO_%%'  # dummy to support inversion
+    default: true
+    scope: metadata.tex.in
+  header_date_show:
+    eol_marker: '%%_PATCH_%_DATE_%_SHOW_%%'  # dummy to support inversion
+    default: true
+    scope: metadata.tex.in
+  footer_frame_note:
+    eol_marker: '%%_PATCH_%_FRAME_%_NOTE_%%'
+    default: null
+    scope: metadata.tex.in
+  footer_page_number_prefix:
+    eol_marker: '%%_PATCH_%_FOOT_%_PAGE_%_COUNTER_%_LABEL_%%'
+    default: 'Page'
+    scope: metadata.tex.in
+  change_log_issue_label:
+    eol_marker: '%%_PATCH_%_CHANGELOG_%_ISSUE_%_LABEL_%%'
+    default: 'Iss.'
+    scope: metadata.tex.in
+  change_log_revision_label:
+    eol_marker: '%%_PATCH_%_CHANGELOG_%_REVISION_%_LABEL_%%'
+    default: 'Rev.'
+    scope: metadata.tex.in
+  change_log_date_label:
+    eol_marker: '%%_PATCH_%_CHANGELOG_%_DATE_%_LABEL_%%'
+    default: 'Date'
+    scope: metadata.tex.in
+  change_log_author_label:
+    eol_marker: '%%_PATCH_%_CHANGELOG_%_AUTHOR_%_LABEL_%%'
+    default: Author
+    scope: metadata.tex.in
+  change_log_description_label:
+    eol_marker: '%%_PATCH_%_CHANGELOG_%_DESCRIPTION_%_LABEL_%%'
+    default: Description
+    scope: metadata.tex.in
+  approvals_role_label:
+    eol_marker: '%%_PATCH_%_APPROVALS_%_ROLE_%_LABEL_%%'
+    default: Approvals
+    scope: metadata.tex.in
+  approvals_name_label:
+    eol_marker: '%%_PATCH_%_APPROVALS_%_NAME_%_LABEL_%%'
+    default: Name
+    scope: metadata.tex.in
+  approvals_date_and_signature_label:
+    eol_marker: '%%_PATCH_%_APPROVALS_%_DATE_%_AND_%_SIGNATURE_%_LABEL_%%'
+    default: Date and Signature
+    scope: metadata.tex.in
+  proprietary_information:
+    eol_marker: '%%_PATCH_%_PROPRIETARY_%_INFORMATION_%_LABEL_%%'
+    default: null
+    scope: metadata.tex.in
+  toc_level:
+    eol_marker: '%%_PATCH_%_TOC_%_LEVEL_%%'
+    default: 2
+    scope: driver.tex.in
+  list_of_figures:
+    eol_marker: '%%_PATCH_%_LOF_%%'
+    default: '%'  # empty string to enable lof
+    scope: driver.tex.in
+  list_of_tables:
+    eol_marker: '%%_PATCH_%_LOT_%%'
+    default: '%'  # empty string to enable lot
+    scope: driver.tex.in
+  font_path:
+    eol_marker: '%%_PATCH_%_FONT_%_PATH_%%'
+    default: /opt/fonts/
+    scope: setup.tex.in
+  font_suffix:
+    eol_marker: '%%_PATCH_%_FONT_%_SUFFIX_%%'
+    default: .otf
+    scope: setup.tex.in
+  bold_font:
+    eol_marker: '%%_PATCH_%_BOLD_%_FONT_%%'
+    default: ITCFranklinGothicStd-Demi
+    scope: setup.tex.in
+  italic_font:
+    eol_marker: '%%_PATCH_%_ITALIC_%_FONT_%%'
+    default: ITCFranklinGothicStd-BookIt
+    scope: setup.tex.in
+  bold_italic_font:
+    eol_marker: '%%_PATCH_%_BOLDITALIC_%_FONT_%%'
+    default: ITCFranklinGothicStd-DemiIt
+    scope: setup.tex.in
+  main_font:
+    eol_marker: '%%_PATCH_%_MAIN_%_FONT_%%'
+    default: ITCFranklinGothicStd-Book
+    scope: setup.tex.in
+  fixed_font_package:
+    eol_marker: '%%_PATCH_%_FIXED_%_FONT_%_PACKAGE_%%'
+    default: sourcecodepro
+    scope: setup.tex.in
+  code_fontsize:
+    eol_marker: '%%_PATCH_%_CODE_%_FONTSIZE_%%'
+    default: \scriptsize
+    scope: setup.tex.in
+  chosen_logo:
+    eol_marker: '%%_PATCH_%_CHOSEN_%_LOGO_%%'
+    default: liitos-logo.png
+    scope: setup.tex.in
+tokens:
+  '%%_PATCH_%_MAIN_%_TITLE_%%': title
+  '%%_PATCH_%_SUB_%_TITLE_%%': sub_title
+  '%%_PATCH_%_HEADER_%_TITLE_%%': header_title
+  '%%_PATCH_%_TYPE_%%': header_type
+  '%%_PATCH_%_ID_%%': header_id
+  '%%_PATCH_%_ID_%_LABEL_%%': header_id_label
+  '%%_PATCH_%_ID_%_SHOW_%%': header_id_show  # dummy to support inversion
+  '%%_PATCH_%_ISSUE_%%': issue
+  '%%_PATCH_%_REVISION_%%': revision
+  '%%_PATCH_%_ISSUE_%_REVISION_%_COMBINED_%%': header_issue_revision_combined
+  '%%_PATCH_%_ISSUE_%_REVISION_%_COMBINED_%_LABEL_%%': header_issue_revision_combined_label
+  '%%_PATCH_%_ISSUE_%_REVISION_%_COMBINED_%_SHOW_%%': header_issue_revision_combined_show  # dummy to support inversion
+  '%%_PATCH_%_DATE_%%': header_date
+  '%%_PATCH_%_DATE_%_ENABLE_%_AUTO__%%': header_date_enable_auto  # dummy to support inversion
+  '%%_PATCH_%_DATE_%_LABEL_%%': header_date_label
+  '%%_PATCH_%_DATE_%_SHOW_%%': header_date_show  # dummy to support inversion
+  '%%_PATCH_%_FRAME_%_NOTE_%%': footer_frame_note
+  '%%_PATCH_%_FOOT_%_PAGE_%_COUNTER_%_LABEL_%%': footer_page_number_prefix
+  '%%_PATCH_%_CHANGELOG_%_ISSUE_%_LABEL_%%': change_log_issue_label
+  '%%_PATCH_%_CHANGELOG_%_REVISION_%_LABEL_%%': change_log_revision_label
+  '%%_PATCH_%_CHANGELOG_%_DATE_%_LABEL_%%': change_log_date_label
+  '%%_PATCH_%_CHANGELOG_%_AUTHOR_%_LABEL_%%': change_log_author_label
+  '%%_PATCH_%_CHANGELOG_%_DESCRIPTION_%_LABEL_%%': change_log_description_label
+  '%%_PATCH_%_APPROVALS_%_ROLE_%_LABEL_%%': approvals_role_label
+  '%%_PATCH_%_APPROVALS_%_NAME_%_LABEL_%%': approvals_name_label
+  '%%_PATCH_%_APPROVALS_%_DATE_%_AND_%_SIGNATURE_%_LABEL_%%': approvals_date_and_signature_label
+  '%%_PATCH_%_PROPRIETARY_%_INFORMATION_%_LABEL_%%': proprietary_information
+  '%%_PATCH_%_TOC_%_LEVEL_%%': toc_level
+  '%%_PATCH_%_LOF_%%': list_of_figures
+  '%%_PATCH_%_LOT_%%': list_of_tables
+  '%%_PATCH_%_FONT_%_PATH_%%': font_path
+  '%%_PATCH_%_FONT_%_SUFFIX_%%': font_suffix
+  '%%_PATCH_%_BOLD_%_FONT_%%': bold_font
+  '%%_PATCH_%_ITALIC_%_FONT_%%': italic_font
+  '%%_PATCH_%_BOLDITALIC_%_FONT_%%': bold_italic_font
+  '%%_PATCH_%_MAIN_%_FONT_%%': main_font
+  '%%_PATCH_%_FIXED_%_FONT_%_PACKAGE_%%': fixed_font_package
+  '%%_PATCH_%_CODE_%_FONTSIZE_%%': code_fontsize
+  '%%_PATCH_%_CHOSEN_%_LOGO_%%': chosen_logo
+
+```
+
+to a name path:
+
+```console
+❯ navigaattori eject l -o a-name.yml
+2022-12-13T21:00:01.948022+00:00 WARNING [NAVIGAATTORI]: requested writing (templates/liitos_vocabulary.yml) to file (a-name.yml)
+```
+
+```console
+❯ head a-name.yml
+---
+slot_marker: VALUE.SLOT
+targets:
+  title:
+    eol_marker: '%%_PATCH_%_MAIN_%_TITLE_%%'
+    default: null
+    scope: metadata.tex.in
+  sub_title:
+    eol_marker: '%%_PATCH_%_SUB_%_TITLE_%%'
+    default: ' '
+```
+
+### Eject - Help
+
+```console
+❯ navigaattori eject --help
+Usage: navigaattori eject [OPTIONS] [THAT]
+
+  Eject a template. Enter unique part to retrieve, any unknown word to obtain
+  the list of known templates.
+
+Arguments:
+  [THAT]
+
+Options:
+  -o, --output-path TEXT  Path to output unambiguous content to - like when
+                          ejecting a template
+  -h, --help              Show this message and exit.
+
 ```
