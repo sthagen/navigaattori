@@ -1,5 +1,10 @@
 # Changes
 
+## 2022.12.13
+
+* Added eject command to allow users to adapt across different version mixes of liitos and navigaattori
+* Added liitos vocabulary and functionality to verify tokens in metadata
+
 ## 2022.12.12
 
 * Added concept and option of excluding path parts from exploring
