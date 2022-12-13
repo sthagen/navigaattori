@@ -33,4 +33,3 @@ def load() -> object:
 def tokens(vocabulary: object) -> list[str]:
     """Later alligator."""
     return sorted(vocabulary['tokens'].values())
-

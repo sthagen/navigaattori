@@ -104,7 +104,7 @@ class Meta:
 
         common_tokens_count = len(common_tokens)
         tok_sin_plu = 'token' if common_tokens_count == 1 else 'tokens'
-        token_use = round(100. * common_tokens_count / len(self.tokens), 2)
+        token_use = round(100.0 * common_tokens_count / len(self.tokens), 2)
         log.info(f'metadata successfully verified {common_tokens_count} {tok_sin_plu} ({token_use}% of vocabulary)')
 
     def __init__(self, meta_top_path: str | pathlib.Path, options: dict[str, bool]):
