@@ -27,3 +27,10 @@ def load() -> object:
         yaml.dump(vocabulary)
 
     return vocabulary
+
+
+@no_type_check
+def tokens(vocabulary: object) -> list[str]:
+    """Later alligator."""
+    return sorted(vocabulary['tokens'].values())
+

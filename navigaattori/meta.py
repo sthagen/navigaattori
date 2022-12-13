@@ -4,6 +4,7 @@ from typing import no_type_check
 
 import yaml
 
+import navigaattori.liitos_meta as voc
 from navigaattori import ENCODING, log
 
 
@@ -79,6 +80,33 @@ class Meta:
         log.info(f'metadata successfully loaded completely starting from ({self.meta_top_path}):')
         self.log_assessed_meta()
 
+    def verify_token_use(self) -> None:
+        """Verify metadata uses only tokens from the liitos vocabulary."""
+        log.info(
+            f'verifying metadata starting from ({self.meta_top_path}) uses only tokens from the liitos vocabulary ...'
+        )
+        bad_tokens = []
+        common_tokens = sorted(self.metadata['document']['common'])
+        for token in common_tokens:
+            if token not in self.tokens:
+                bad_tokens.append(token)
+                log.error(f'- unknown token ({token}) in metadata')
+
+        if bad_tokens:
+            badness = len(bad_tokens)
+            tok_sin_plu = 'token' if badness == 1 else 'tokens'
+            self.state_code = 1
+            self.state_message = (
+                f'found {badness} invalid {tok_sin_plu} {tuple(sorted(bad_tokens))}'
+                f' in metadata loaded completely starting from ({self.meta_top_path})'
+            )
+            return
+
+        common_tokens_count = len(common_tokens)
+        tok_sin_plu = 'token' if common_tokens_count == 1 else 'tokens'
+        token_use = round(100. * common_tokens_count / len(self.tokens), 2)
+        log.info(f'metadata successfully verified {common_tokens_count} {tok_sin_plu} ({token_use}% of vocabulary)')
+
     def __init__(self, meta_top_path: str | pathlib.Path, options: dict[str, bool]):
         self._options = options
         self.quiet: bool = self._options.get('quiet', False)
@@ -93,11 +121,17 @@ class Meta:
 
         self.meta_top_has_content()
 
+        self.vocabulary = voc.load()
+        self.tokens = voc.tokens(self.vocabulary)
+
         if not self.state_code:
             self.load_meta_top()
 
         if not self.state_code:
             self.load_meta_import()
+
+        if not self.state_code:
+            self.verify_token_use()
 
         if not self.state_code:
             log.info(f'metadata from ({self.meta_top_path}) seems to be valid')
