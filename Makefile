@@ -1,7 +1,6 @@
 .DEFAULT_GOAL := all
-isort = isort navigaattori test
 black = black -S -l 120 --target-version py311 navigaattori test
-flake8 = flake8 --ignore E203,N801 navigaattori test
+lint = ruff navigaattori test
 pytest = pytest --asyncio-mode=strict --cov=navigaattori --cov-report term-missing:skip-covered --cov-branch --log-format="%(levelname)s %(message)s"
 types = mypy navigaattori
 .PHONY: install
@@ -21,14 +20,13 @@ init:
 
 .PHONY: format
 format:
-	$(isort)
+	$(lint) --fix
 	$(black)
 
 .PHONY: lint
 lint:
 	python setup.py check -ms
-	@echo Disabled $(flake8)
-	$(isort) --check-only --df
+	$(lint)
 	$(black) --check --diff
 
 .PHONY: types

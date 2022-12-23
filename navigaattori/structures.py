@@ -242,7 +242,7 @@ class Structures:
     def validate_on_screening_level(self) -> None:
         """Let's wrap this up if any invalid target type is present."""
         if not self.target_types:
-            self.state_message = f'target types are not present - invalid structures file?'
+            self.state_message = 'target types are not present - invalid structures file?'
             log.error(self.state_message)
             self.state_code = 1
             return

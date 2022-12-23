@@ -36,7 +36,7 @@ def test_approvals_wrong_key():
     approvals = approve.Approvals(wrong_keys_path, {})
     detail = (
         "no map or one of the keys (role, name) missing in {'name': 'A Reviewer', 'rloe': 'Review'}"
-        f" of approvals read from ({wrong_keys_path})?"
+        f' of approvals read from ({wrong_keys_path})?'
     )
     assert approvals.code_details() == (1, detail)
 

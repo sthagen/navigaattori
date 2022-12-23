@@ -1,6 +1,5 @@
 """Command line interface for navigator (Finnish: navigaattori) guided by conventions."""
 import logging
-import os
 import pathlib
 import sys
 
@@ -9,15 +8,11 @@ import typer
 import navigaattori.api as api
 import navigaattori.eject as eje
 from navigaattori import (
-    APP_ALIAS,
     APP_NAME,
-    DEBUG,
     DEFAULT_STRUCTURE_NAME,
     QUIET,
-    VERBOSE,
     __version__ as APP_VERSION,
     log,
-    parse_csl,
 )
 
 app = typer.Typer(

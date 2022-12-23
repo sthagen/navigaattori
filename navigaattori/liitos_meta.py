@@ -24,7 +24,7 @@ def load() -> object:
 
     log.info(f'dumping liitos vocabulary to ({LIITOS_VOCABULARY_PATH}) ...')
     with open(LIITOS_VOCABULARY_PATH, 'wt', encoding=ENCODING) as handle:
-        yaml.dump(vocabulary)
+        yaml.dump(vocabulary, handle)
 
     return vocabulary
 

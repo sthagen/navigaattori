@@ -35,9 +35,9 @@ def test_changes_wrong_key():
     wrong_keys_path = GUESS_FIXTURE / 'foo' / 'changes-wrong-key.yml'
     changes = change.Changes(wrong_keys_path, {})
     detail = (
-        "no map or one of the required keys (author, summary) missing in"
+        'no map or one of the required keys (author, summary) missing in'
         " {'auhtor': 'An Author', 'date': 'PUBLICATIONDATE', 'issue': '01', 'summary': 'Initial Issue'}"
-        f" of changes read from ({wrong_keys_path})?"
+        f' of changes read from ({wrong_keys_path})?'
     )
     assert changes.code_details() == (1, detail)
 
