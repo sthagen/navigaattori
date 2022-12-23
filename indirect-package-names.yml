@@ -1,0 +1,11 @@
+---
+packages:
+- GitPython
+- PyYAML
+- click
+- future
+- gitdb
+- lxml
+- psutil
+- py-cpuinfo
+- smmap

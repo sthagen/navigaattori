@@ -1,0 +1,15 @@
+---
+urls:
+  foran: https://git.sr.ht/~sthagen/foran
+  rtoml: https://github.com/samuelcolvin/rtoml/blob/main/README.md
+  taksonomia: https://git.sr.ht/~sthagen/taksonomia
+  typing-extensions: https://github.com/python/typing/blob/master/typing_extensions/README.rst
+authors:
+  foran: Stefan Hagen
+  lazr.uri: '"LAZR Developers" team'
+  msgspec: Jim Crist-Harif
+  taksonomia: Stefan Hagen
+  typing-extensions: The Python Typing Team
+descriptions:
+  rtoml: A better TOML library for python implemented in rust.
+
