@@ -43,8 +43,9 @@ if IPN_PATH.is_file():
         indirect_names = yaml.safe_load(handle)
 
 if indirect_names:
-    if indirect_names.get('packages', []):
-        INDIRECT_NAMES.extend(indirect_names)
+    if (the_names := indirect_names.get('packages', [])):
+        print(f'extending indirect packages ({the_names}) from file')
+        INDIRECT_NAMES.extend(the_names)
         INDIRECT_NAMES = sorted(set(INDIRECT_NAMES))
 
 TARGET = """\
