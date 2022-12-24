@@ -1,9 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-extending indirect packages (['GitPython', 'PyYAML', 'click', 'future', 'gitdb', 'lxml', 'psutil', 'py-cpuinfo', 'smmap']) from file
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json) with SHA256 checksum ([c3531139 ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json.sha256 "sha256:c353113972a775d27224a745292331e4d04948fd15b7f098e2a588e335930032")).
-<!--[[[end]]] (checksum: 3fdd5784bf6210ad33ab5d08a64cf956)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json) with SHA256 checksum ([6a574a7a ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json.sha256 "sha256:6a574a7a7af3cf9b924968eb10ca681e8108f4547917b15cca7adf8e1b140454")).
+<!--[[[end]]] (checksum: c0df4e3c209975a0a3893d8c4ffe179b)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
