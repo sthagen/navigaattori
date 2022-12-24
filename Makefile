@@ -67,7 +67,7 @@ baseline:
 .PHONY: clocal
 clocal:
 	@rm -rf GUESS
-	@rm -f inventory.*
+	@rm -f inventory.* liitos-vocabulary.yml
 
 .PHONY: clean
 clean: clocal
