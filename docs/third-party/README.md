@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json) with SHA256 checksum ([6a574a7a ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json.sha256 "sha256:6a574a7a7af3cf9b924968eb10ca681e8108f4547917b15cca7adf8e1b140454")).
-<!--[[[end]]] (checksum: c0df4e3c209975a0a3893d8c4ffe179b)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json) with SHA256 checksum ([6ed21cd7 ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom.json.sha256 "sha256:6ed21cd7e82c4baa54c178681d43e0f9bcf7702cba695b0b6a42de71786a9ac0")).
+<!--[[[end]]] (checksum: 37798cffa8c8ccf849eb11637439174c)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -28,11 +28,11 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 | [click](https://palletsprojects.com/p/click/)                  | [8.1.3](https://pypi.org/project/click/8.1.3/)       | BSD License | Armin Ronacher                 | Composable command line interface toolkit                                                        |
 | [future](https://python-future.org)                            | [0.18.2](https://pypi.org/project/future/0.18.2/)    | MIT License | Ed Schofield                   | Clean single-source support for Python 3 and 2                                                   |
 | [gitdb](https://github.com/gitpython-developers/gitdb)         | [4.0.10](https://pypi.org/project/gitdb/4.0.10/)     | BSD License | Sebastian Thiel                | Git Object Database                                                                              |
-| [lxml](https://lxml.de/)                                       | [4.9.1](https://pypi.org/project/lxml/4.9.1/)        | BSD License | lxml dev team                  | Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API. |
+| [lxml](https://lxml.de/)                                       | [4.9.2](https://pypi.org/project/lxml/4.9.2/)        | BSD License | lxml dev team                  | Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API. |
 | [psutil](https://github.com/giampaolo/psutil)                  | [5.9.4](https://pypi.org/project/psutil/5.9.4/)      | BSD License | Giampaolo Rodola               | Cross-platform lib for process and system monitoring in Python.                                  |
 | [py-cpuinfo](https://github.com/workhorsy/py-cpuinfo)          | [9.0.0](https://pypi.org/project/py-cpuinfo/9.0.0/)  | MIT License | Matthew Brennan Jones          | Get CPU info with pure Python                                                                    |
 | [smmap](https://github.com/gitpython-developers/smmap)         | [5.0.0](https://pypi.org/project/smmap/5.0.0/)       | BSD License | Sebastian Thiel                | A pure Python implementation of a sliding window memory map manager                              |
-<!--[[[end]]] (checksum: b5e2b63b3a37536212626c075d255d78)-->
+<!--[[[end]]] (checksum: 81f3f992843ec5a19682d53e1d1d0305)-->
 
 ## Dependency Tree(s)
 
@@ -55,7 +55,7 @@ foran==2022.12.7
   - typer [required: >=0.7.0, installed: 0.7.0]
     - click [required: >=7.1.1,<9.0.0, installed: 8.1.3]
 taksonomia==2022.12.7
-  - lxml [required: >=4.9.1, installed: 4.9.1]
+  - lxml [required: >=4.9.1, installed: 4.9.2]
   - orjson [required: >=3.8.3, installed: 3.8.3]
   - psutil [required: >=5.9.4, installed: 5.9.4]
   - py-cpuinfo [required: >=9.0.0, installed: 9.0.0]
@@ -63,4 +63,4 @@ taksonomia==2022.12.7
 treelib==1.6.1
   - future [required: Any, installed: 0.18.2]
 ````
-<!--[[[end]]] (checksum: 2bea7004912e6ae4985cf112b3f41c71)-->
+<!--[[[end]]] (checksum: 49dc31fc9b83f441210af65527f70b4c)-->
