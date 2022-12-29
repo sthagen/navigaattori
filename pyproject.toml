@@ -27,7 +27,7 @@ dependencies = [
 requires-python = ">=3.10"
 
 [project.optional-dependencies]
-dev = ["black", "coverage", "flake8", "hypothesis", "mypy", "pytest", "pytest-cov", "pytest-flake8"]
+dev = ["black", "coverage", "hypothesis", "mypy", "pytest", "pytest-cov", "pytest-flake8", "ruff"]
 
 [project.urls]
 Homepage = "https://git.sr.ht/~sthagen/navigaattori"
