@@ -1,4 +1,5 @@
 """Command line interface for navigator (Finnish: navigaattori) guided by conventions."""
+import datetime as dti
 import logging
 import pathlib
 import sys
@@ -11,6 +12,7 @@ from navigaattori import (
     APP_NAME,
     DEFAULT_STRUCTURE_NAME,
     QUIET,
+    TS_FORMAT_PAYLOADS,
     __version__ as APP_VERSION,
     log,
 )
@@ -149,7 +151,17 @@ def explore(  # noqa
         log.error(message)
         return sys.exit(code)
 
+    start_time = dti.datetime.now(tz=dti.timezone.utc)
+    start_ts = start_time.strftime(TS_FORMAT_PAYLOADS)
+    log.info(f'start timestamp ({start_ts})')
+
     code, _ = api.explore(doc_root=doc, options=options)
+
+    end_time = dti.datetime.now(tz=dti.timezone.utc)
+    end_ts = end_time.strftime(TS_FORMAT_PAYLOADS)
+    duration_secs = (end_time - start_time).total_seconds()
+    log.info(f'end timestamp ({end_ts})')
+    log.info(f'explored structures at {doc} in {duration_secs} secs')
     return sys.exit(code)
 
 
