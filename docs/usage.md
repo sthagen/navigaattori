@@ -25,7 +25,7 @@
 
 ```console
 ❯ navigaattori version
-Navigator (Finnish: navigaattori) guided by conventions. version 2022.12.13+parent.ff7049ef
+Navigator (Finnish: navigaattori) guided by conventions. version 2023.1.14+parent.892f738b
 ```
 
 ### Version - Help
