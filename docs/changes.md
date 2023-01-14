@@ -3,6 +3,7 @@
 ## 2023.1.14
 
 * Added total run duration to render command logging (<https://todo.sr.ht/~sthagen/navigaattori/1>)
+* Fixed templates packaging
 
 ## 2022.12.13
 
