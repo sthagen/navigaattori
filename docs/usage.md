@@ -4,18 +4,22 @@
 
 ```console
 ❯ navigaattori
-Usage: navigaattori [OPTIONS] COMMAND [ARGS]...
 
-  Navigator (Finnish: navigaattori) guided by conventions.
+ Usage: navigaattori [OPTIONS] COMMAND [ARGS]...
 
-Options:
-  -V, --version  Display the application version and exit
-  -h, --help     Show this message and exit.
+ Navigator (Finnish: navigaattori) guided by conventions.
 
-Commands:
-  eject    Eject a template.
-  explore  Explore the structures definition tree in the file system.
-  version  Display the application version and exit.
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --version  -V        Display the application version and exit                                                    │
+│ --help     -h        Show this message and exit.                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ eject    Eject a template. Enter unique part to retrieve, any unknown word to obtain the list of known           │
+│          templates.                                                                                              │
+│ explore  Explore the structures definition tree in the file system.                                              │
+│ version  Display the application version and exit.                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
 ```
 ## Version
 
@@ -28,18 +32,22 @@ Navigator (Finnish: navigaattori) guided by conventions. version 2022.12.13+pare
 
 ```console
 ❯ navigaattori version --help
-Usage: navigaattori version [OPTIONS]
 
-  Display the application version and exit.
+ Usage: navigaattori version [OPTIONS]
 
-Options:
-  -h, --help  Show this message and exit.
+ Display the application version and exit.
+
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help  -h        Show this message and exit.                                                                    │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
 ```
 
 ## Explore
 
 ```console
 ❯ navigaattori explore basic 2>&1 | cut -c34- | sed "s/NAVIGAATTORI/.../g; s/WARNING/W/g; s/ERROR/E/g; s/INFO/I/g;"
+I [...]: start timestamp (2023-01-14 20:47:54.904846 UTC)
 I [...]: - will exclude (.git/, render/pdf/) path partials
 I [...]: not guessing but reading target types from (basic/structures.yml) data instead ...
 I [...]: screening target type (wun) ...
@@ -74,12 +82,15 @@ I [...]:   + file -> structure.yml
 I [...]:   + structure -> {}
 I [...]:   + valid -> False
 E [...]: specifications for target types (bar, wun) are invalid
+I [...]: end timestamp (2023-01-14 20:47:54.907395 UTC)
+I [...]: explored structures at basic in 0.002549 secs
 ```
 
 using different excludes than the defaults `.git/` and `render/pdf/`:
 
 ```console
 ❯ navigaattori explore basic --excludes foo,bar 2>&1 | cut -c34- | sed "s/NAVIGAATTORI/.../g; s/WARNING/W/g; s/ERROR/E/g; s/INFO/I/g;"
+I [...]: start timestamp (2023-01-14 20:50:43.266950 UTC)
 I [...]: - will exclude (foo, bar) path partials
 I [...]: not guessing but reading target types from (basic/structures.yml) data instead ...
 I [...]: screening target type (wun) ...
@@ -114,22 +125,28 @@ I [...]:   + file -> structure.yml
 I [...]:   + structure -> {}
 I [...]:   + valid -> False
 E [...]: specifications for target types (bar, wun) are invalid
+I [...]: end timestamp (2023-01-14 20:50:43.269866 UTC)
+I [...]: explored structures at basic in 0.002916 secs
 ```
 
 missing structures file (the folder name lowercase guess is maybe not optimal ...):
 
 ```console
 ❯ navigaattori explore guess 2>&1 | cut -c34- | sed "s/NAVIGAATTORI/.../g; s/WARNING/W/g; s/ERROR/E/g; s/INFO/I/g;"
+I [...]: start timestamp (2023-01-14 20:52:06.897623 UTC)
 I [...]: - will exclude (.git/, render/pdf/) path partials
 E [...]: structures file (guess/structures.yml) does not exist or is empty
 I [...]: ... you may want to try the --guess option to the explore command to bootstrap a structures file
 E [...]: target types are not present - invalid structures file?
+I [...]: end timestamp (2023-01-14 20:52:06.898443 UTC)
+I [...]: explored structures at guess in 0.00082 secs
 ```
 
 taking the hint and enter guess-mode:
 
 ```console
 ❯ navigaattori explore guess --guess 2>&1 | cut -c34- | sed "s/NAVIGAATTORI/.../g; s/WARNING/W/g; s/ERROR/E/g; s/INFO/I/g;"
+I [...]: start timestamp (2023-01-14 20:54:33.839036 UTC)
 I [...]: - will exclude (.git/, render/pdf/) path partials
 W [...]: structures file (guess/structures.yml) does not exist or is empty
 I [...]: guessing target types from recursive search for (structure.yml) files ...
@@ -227,6 +244,8 @@ I [...]:   + valid -> True
 I [...]: structures appear to be valid (on file system screening level)
 I [...]: dumping proposed global expanded file from guessing to (GUESSED_STRUCTURES/tree.yml) ...
 I [...]: dumping proposed structures file from guessing to (GUESSED_STRUCTURES/structures.yml) ...
+I [...]: end timestamp (2023-01-14 20:54:33.869474 UTC)
+I [...]: explored structures at guess in 0.030438 secs
 ```
 
 Inspecting folder `GUESSED_STRUCTURES` contents:
@@ -264,33 +283,35 @@ structures:
 
 ```console
 ❯ navigaattori explore --help
-Usage: navigaattori explore [OPTIONS] [DOC_ROOT_POS]
 
-  Explore the structures definition tree in the file system.
+ Usage: navigaattori explore [OPTIONS] [DOC_ROOT_POS]
 
-Arguments:
-  [DOC_ROOT_POS]
+ Explore the structures definition tree in the file system.
 
-Options:
-  -d, --document-root TEXT  Root of the document tree to visit. Optional
-                            (default: positional tree root value)
-  -v, --verbose             Verbose output (default is False)
-  -s, --strict              Output noisy warnings on console (default is
-                            False)
-  -g, --guess               Guess and derive structures from folder tree
-                            structure.yml files if possible (default is False)
-  -x, --excludes TEXT       comma separated list of values to exclude paths
-                            containing the substring (default:
-                            .git/,render/pdf/)  [default: .git/,render/pdf/]
-  -h, --help                Show this message and exit.
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│   doc_root_pos      [DOC_ROOT_POS]                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --document-root  -d      TEXT  Root of the document tree to visit. Optional (default: positional tree root       │
+│                                value)                                                                            │
+│ --verbose        -v            Verbose output (default is False)                                                 │
+│ --strict         -s            Output noisy warnings on console (default is False)                               │
+│ --guess          -g            Guess and derive structures from folder tree structure.yml files if possible      │
+│                                (default is False)                                                                │
+│ --excludes       -x      TEXT  comma separated list of values to exclude paths containing the substring          │
+│                                (default: .git/,render/pdf/)                                                      │
+│                                [default: .git/,render/pdf/]                                                      │
+│ --help           -h            Show this message and exit.                                                       │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
 ```
 
 ## Eject
 
 ```console
 ❯ navigaattori eject
-2022-12-13T20:58:36.347693+00:00 ERROR [NAVIGAATTORI]: eject of template with no name requested
-2022-12-13T20:58:36.348226+00:00 INFO [NAVIGAATTORI]: templates known: (liitos-vocabulary-yaml)
+2023-01-14T20:57:50.414199+00:00 ERROR [NAVIGAATTORI]: eject of template with no name requested
+2023-01-14T20:57:50.414940+00:00 INFO [NAVIGAATTORI]: templates known: (liitos-vocabulary-yaml)
 ```
 
 indicating the source:
@@ -503,7 +524,7 @@ to a name path:
 
 ```console
 ❯ navigaattori eject l -o a-name.yml
-2022-12-13T21:00:01.948022+00:00 WARNING [NAVIGAATTORI]: requested writing (templates/liitos_vocabulary.yml) to file (a-name.yml)
+2023-01-14T20:58:42.496489+00:00 WARNING [NAVIGAATTORI]: requested writing (templates/liitos_vocabulary.yml) to file
 ```
 
 ```console
@@ -524,17 +545,17 @@ targets:
 
 ```console
 ❯ navigaattori eject --help
-Usage: navigaattori eject [OPTIONS] [THAT]
 
-  Eject a template. Enter unique part to retrieve, any unknown word to obtain
-  the list of known templates.
+ Usage: navigaattori eject [OPTIONS] [THAT]
 
-Arguments:
-  [THAT]
+ Eject a template. Enter unique part to retrieve, any unknown word to obtain the list of known templates.
 
-Options:
-  -o, --output-path TEXT  Path to output unambiguous content to - like when
-                          ejecting a template
-  -h, --help              Show this message and exit.
+╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│   that      [THAT]                                                                                               │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --output-path  -o      TEXT  Path to output unambiguous content to - like when ejecting a template               │
+│ --help         -h            Show this message and exit.                                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
