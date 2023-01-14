@@ -1,5 +1,9 @@
 # Changes
 
+## 2023.1.14
+
+* Added total run duration to render command logging (<https://todo.sr.ht/~sthagen/navigaattori/1>)
+
 ## 2022.12.13
 
 * Added eject command to allow users to adapt across different version mixes of liitos and navigaattori
