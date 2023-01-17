@@ -1,5 +1,9 @@
 # Changes
 
+## 2023.1.17
+
+* Amended per liitos 2023.1.17 (extended changes model and adjustable vertical offset for approvals table)
+
 ## 2023.1.14
 
 * Added total run duration to render command logging (<https://todo.sr.ht/~sthagen/navigaattori/1>)
