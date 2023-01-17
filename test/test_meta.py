@@ -43,6 +43,7 @@ def test_meta():
     expected = {
         'document': {
             'common': {
+                'approvals_adjustable_vertical_space': '2.5em',
                 'approvals_date_and_signature_label': 'Date and ' + 'Signature',
                 'approvals_name_label': 'Name',
                 'approvals_role_label': 'Approvals',

@@ -17,6 +17,7 @@ document:
     change_log_date_label: Date
     change_log_author_label: Author
     change_log_description_label: Description
+    approvals_adjustable_vertical_space: '2.5em'
     approvals_role_label: Approvals
     approvals_name_label: Name
     approvals_date_and_signature_label: Date and Signature
