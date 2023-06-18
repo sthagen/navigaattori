@@ -12,7 +12,7 @@
     "Version": "6.0"
   },
   {
-    "Author": "UNKNOWN",
+    "Author": "Stefan Hagen <stefan@hagen.link>",
     "Description": "In front or behind (Danish: foran eller bagved)? Answering the question if a local repository status is in front of or behind its remote.",
     "License": "MIT License",
     "LicenseFile": "/Users/ruth/.pyenv/versions/3.10.9/envs/navigaattori-3-10-9/lib/python3.10/site-packages/foran-2022.12.7.dist-info/LICENSE",
@@ -20,11 +20,11 @@
     "Name": "foran",
     "NoticeFile": "UNKNOWN",
     "NoticeText": "UNKNOWN",
-    "URL": "UNKNOWN",
+    "URL": "https://git.sr.ht/~sthagen/foran",
     "Version": "2022.12.7"
   },
   {
-    "Author": "UNKNOWN",
+    "Author": "Stefan Hagen <stefan@hagen.link>",
     "Description": "Taxonomy (Finnish: taksonomia) of a folder tree, guided by conventions.",
     "License": "MIT License",
     "LicenseFile": "/Users/ruth/.pyenv/versions/3.10.9/envs/navigaattori-3-10-9/lib/python3.10/site-packages/taksonomia-2022.12.7.dist-info/LICENSE",
@@ -32,7 +32,7 @@
     "Name": "taksonomia",
     "NoticeFile": "UNKNOWN",
     "NoticeText": "UNKNOWN",
-    "URL": "UNKNOWN",
+    "URL": "https://git.sr.ht/~sthagen/taksonomia",
     "Version": "2022.12.7"
   },
   {
