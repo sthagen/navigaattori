@@ -17,6 +17,7 @@ from navigaattori import (
 from navigaattori.approvals import Approvals
 from navigaattori.bind import Binder
 from navigaattori.changes import Changes
+from navigaattori.layout import Layout
 from navigaattori.meta import Meta
 
 
@@ -149,11 +150,17 @@ class Structures:
                         for erfk in self.resource_keys:
                             erv = self.target_types[target_type]['structure'][target][fk][erfk]
                             if not erv or not (self.fs_root / spec['dir'] / erv).is_file():
-                                log.error(
-                                    f'  + invalid ({erfk}) resource ({erv}) for facet ({fk}) of target ({target})'
-                                    f' with target type ({target_type}) - resource does not exist or is no file'
-                                )
-                                self.target_types[target_type]['valid'] = False
+                                if erfk == 'layout':
+                                    log.info(
+                                        f'  + optional ({erfk}) resource is ({erv}) for facet ({fk}) of target ({target})'
+                                        f' with target type ({target_type}) - resource does not exist or is no file'
+                                    )
+                                else:
+                                    log.error(
+                                        f'  + invalid ({erfk}) resource ({erv}) for facet ({fk}) of target ({target})'
+                                        f' with target type ({target_type}) - resource does not exist or is no file'
+                                    )
+                                    self.target_types[target_type]['valid'] = False
                             else:
                                 if erfk == 'approvals':
                                     approvals_path = self.fs_root / self.target_types[target_type]['dir'] / erv
@@ -171,6 +178,12 @@ class Structures:
                                     changes_path = self.fs_root / self.target_types[target_type]['dir'] / erv
                                     log.info(f'assessing changes ({changes_path}) yielding:')
                                     code, details = self.assess_changes(changes_path)
+                                    if code:
+                                        self.target_types[target_type]['valid'] = False
+                                elif erfk == 'layout':
+                                    layout_path = self.fs_root / self.target_types[target_type]['dir'] / erv
+                                    log.info(f'assessing layout ({layout_path}) yielding:')
+                                    code, details = self.assess_layout(layout_path)
                                     if code:
                                         self.target_types[target_type]['valid'] = False
                                 elif erfk == 'meta':
@@ -206,6 +219,15 @@ class Structures:
             return 0, changes.container()
 
         return changes.code_details()
+
+    @no_type_check
+    def assess_layout(self, layout_path: str | pathlib.Path):
+        """Delegate the verification to an instance of the Layout class."""
+        layout = Layout(layout_path, options=self._options)
+        if layout.is_valid():
+            return 0, layout.container()
+
+        return layout.code_details()
 
     @no_type_check
     def assess_meta(self, meta_top_path: str | pathlib.Path):
@@ -307,6 +329,7 @@ class Structures:
             'approvals': '',  # resource pointer to fs
             'bind': '',  # resource pointer to fs
             'changes': '',  # resource pointer to fs
+            'layout': '',  # resource pointer to fs
             'meta': '',  # resource pointer to fs
             'render': True,
             'formats': [],
