@@ -11,6 +11,7 @@ Third party dependencies are documented in the folder [third-party](third-party/
 [![wheel](https://img.shields.io/pypi/wheel/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
 [![supported-versions](https://img.shields.io/pypi/pyversions/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
 [![supported-implementations](https://img.shields.io/pypi/implementation/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
+[![maintenance-status](https://img.shields.io/github/commit-activity/y/sthagen/navigaattori.svg?style=flat)](https://git.sr.ht/~sthagen/navigaattori/log)
 
 ## Bug Tracker
 
