@@ -1,5 +1,7 @@
 site_name: Navigaattori
 site_description: "Navigator (Finnish: navigaattori) guided by conventions."
+docs_dir: ../docs
+site_dir: ../site
 
 theme:
   name: 'material'
