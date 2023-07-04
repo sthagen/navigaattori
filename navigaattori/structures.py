@@ -1,7 +1,7 @@
 import copy
 import logging
 import pathlib
-from typing import no_type_check
+from typing import Union, no_type_check
 
 import yaml
 
@@ -194,7 +194,7 @@ class Structures:
                                         self.target_types[target_type]['valid'] = False
 
     @no_type_check
-    def assess_approvals(self, approvals_path: str | pathlib.Path):
+    def assess_approvals(self, approvals_path: Union[str, pathlib.Path]):
         """Delegate the verification to an instance of the Approvals class."""
         approvals = Approvals(approvals_path, options=self._options)
         if approvals.is_valid():
@@ -203,7 +203,7 @@ class Structures:
         return approvals.code_details()
 
     @no_type_check
-    def assess_binder(self, binder_path: str | pathlib.Path):
+    def assess_binder(self, binder_path: Union[str, pathlib.Path]):
         """Delegate the verification to an instance of the Binder class."""
         binder = Binder(binder_path, options=self._options)
         if binder.is_valid():
@@ -212,7 +212,7 @@ class Structures:
         return binder.code_details()
 
     @no_type_check
-    def assess_changes(self, changes_path: str | pathlib.Path):
+    def assess_changes(self, changes_path: Union[str, pathlib.Path]):
         """Delegate the verification to an instance of the Changes class."""
         changes = Changes(changes_path, options=self._options)
         if changes.is_valid():
@@ -221,7 +221,7 @@ class Structures:
         return changes.code_details()
 
     @no_type_check
-    def assess_layout(self, layout_path: str | pathlib.Path):
+    def assess_layout(self, layout_path: Union[str, pathlib.Path]):
         """Delegate the verification to an instance of the Layout class."""
         layout = Layout(layout_path, options=self._options)
         if layout.is_valid():
@@ -230,7 +230,7 @@ class Structures:
         return layout.code_details()
 
     @no_type_check
-    def assess_meta(self, meta_top_path: str | pathlib.Path):
+    def assess_meta(self, meta_top_path: Union[str, pathlib.Path]):
         """Delegate the verification to an instance of the Meta class."""
         meta = Meta(meta_top_path, options=self._options)
         if meta.is_valid():
@@ -296,7 +296,7 @@ class Structures:
                 yaml.dump(self.structures_map(), handle)
 
     @no_type_check
-    def __init__(self, doc_root: str | pathlib.Path, options: dict[str, bool]):
+    def __init__(self, doc_root: Union[str, pathlib.Path], options: dict[str, bool]):
         self._options = options
         self.quiet: bool = self._options.get('quiet', False)
         self.strict: bool = self._options.get('strict', False)

@@ -1,6 +1,6 @@
 import copy
 import pathlib
-from typing import no_type_check
+from typing import Union, no_type_check
 
 from navigaattori import ENCODING, log
 
@@ -42,7 +42,7 @@ class Binder:
                 continue
             log.info(f'- resource ({resource}) points to file (at {self.binder_base / resource})')
 
-    def __init__(self, binder_path: str | pathlib.Path, options: dict[str, bool]):
+    def __init__(self, binder_path: Union[str, pathlib.Path], options: dict[str, bool]):
         self._options = options
         self.quiet: bool = self._options.get('quiet', False)
         self.strict: bool = self._options.get('strict', False)

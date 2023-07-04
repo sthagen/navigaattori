@@ -16,6 +16,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.9",
 ]
 keywords = ["developer-tools", "validation", "verification"]
 dependencies = [
@@ -25,7 +26,7 @@ dependencies = [
     "treelib >= 1.6.1",
     "typer >= 0.7.0",
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 
 [project.optional-dependencies]
 dev = ["black", "coverage", "hypothesis", "mypy", "pytest", "pytest-cov", "pytest-flake8", "ruff"]
@@ -47,7 +48,7 @@ exclude = ["test*"]
 [tool.black]
 line-length = 120
 skip-string-normalization = true
-target-version = ["py310", "py311", "py312"]
+target-version = ["py39", "py310", "py311", "py312"]
 
 [tool.coverage.run]
 branch = true

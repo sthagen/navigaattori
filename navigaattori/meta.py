@@ -1,6 +1,6 @@
 import copy
 import pathlib
-from typing import no_type_check
+from typing import Union, no_type_check
 
 import yaml
 
@@ -107,7 +107,7 @@ class Meta:
         token_use = round(100.0 * common_tokens_count / len(self.tokens), 2)
         log.info(f'metadata successfully verified {common_tokens_count} {tok_sin_plu} ({token_use}% of vocabulary)')
 
-    def __init__(self, meta_top_path: str | pathlib.Path, options: dict[str, bool]):
+    def __init__(self, meta_top_path: Union[str, pathlib.Path], options: dict[str, bool]):
         self._options = options
         self.quiet: bool = self._options.get('quiet', False)
         self.strict: bool = self._options.get('strict', False)
