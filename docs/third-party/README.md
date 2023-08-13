@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom/cdx.json) with SHA256 checksum ([36616e88 ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom/cdx.json.sha256 "sha256:36616e88e0a548e16b86e58f7d9f68f18fe8e16b5d7c24f17273f392e89d68a9")).
-<!--[[[end]]] (checksum: f1951372bef2eab8c31bd7ab3b334ec4)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom/cdx.json) with SHA256 checksum ([0379df37 ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/sbom/cdx.json.sha256 "sha256:0379df374c8b2123717c1010a6de267fd1bb00220f69a3753090935b5c6aa23e")).
+<!--[[[end]]] (checksum: 1c357f33a95f04d07c9349f4b1b6763b)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -24,15 +24,15 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 <!--[[[fill indirect_dependencies_table()]]]-->
 | Name                                                           | Version                                              | License     | Author                         | Description (from packaging data)                                                                |
 |:---------------------------------------------------------------|:-----------------------------------------------------|:------------|:-------------------------------|:-------------------------------------------------------------------------------------------------|
-| [GitPython](https://github.com/gitpython-developers/GitPython) | [3.1.29](https://pypi.org/project/GitPython/3.1.29/) | BSD License | Sebastian Thiel, Michael Trier | GitPython is a python library used to interact with Git repositories                             |
-| [click](https://palletsprojects.com/p/click/)                  | [8.1.3](https://pypi.org/project/click/8.1.3/)       | BSD License | Armin Ronacher                 | Composable command line interface toolkit                                                        |
-| [future](https://python-future.org)                            | [0.18.2](https://pypi.org/project/future/0.18.2/)    | MIT License | Ed Schofield                   | Clean single-source support for Python 3 and 2                                                   |
+| [GitPython](https://github.com/gitpython-developers/GitPython) | [3.1.32](https://pypi.org/project/GitPython/3.1.32/) | BSD License | Sebastian Thiel, Michael Trier | GitPython is a Python library used to interact with Git repositories                             |
+| [click](https://palletsprojects.com/p/click/)                  | [8.1.6](https://pypi.org/project/click/8.1.6/)       | BSD License | UNKNOWN                        | Composable command line interface toolkit                                                        |
+| [future](https://python-future.org)                            | [0.18.3](https://pypi.org/project/future/0.18.3/)    | MIT License | Ed Schofield                   | Clean single-source support for Python 3 and 2                                                   |
 | [gitdb](https://github.com/gitpython-developers/gitdb)         | [4.0.10](https://pypi.org/project/gitdb/4.0.10/)     | BSD License | Sebastian Thiel                | Git Object Database                                                                              |
-| [lxml](https://lxml.de/)                                       | [4.9.2](https://pypi.org/project/lxml/4.9.2/)        | BSD License | lxml dev team                  | Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API. |
-| [psutil](https://github.com/giampaolo/psutil)                  | [5.9.4](https://pypi.org/project/psutil/5.9.4/)      | BSD License | Giampaolo Rodola               | Cross-platform lib for process and system monitoring in Python.                                  |
+| [lxml](https://lxml.de/)                                       | [4.9.3](https://pypi.org/project/lxml/4.9.3/)        | BSD License | lxml dev team                  | Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API. |
+| [psutil](https://github.com/giampaolo/psutil)                  | [5.9.5](https://pypi.org/project/psutil/5.9.5/)      | BSD License | Giampaolo Rodola               | Cross-platform lib for process and system monitoring in Python.                                  |
 | [py-cpuinfo](https://github.com/workhorsy/py-cpuinfo)          | [9.0.0](https://pypi.org/project/py-cpuinfo/9.0.0/)  | MIT License | Matthew Brennan Jones          | Get CPU info with pure Python                                                                    |
 | [smmap](https://github.com/gitpython-developers/smmap)         | [5.0.0](https://pypi.org/project/smmap/5.0.0/)       | BSD License | Sebastian Thiel                | A pure Python implementation of a sliding window memory map manager                              |
-<!--[[[end]]] (checksum: 81f3f992843ec5a19682d53e1d1d0305)-->
+<!--[[[end]]] (checksum: a7023cd0d57face642d1b8c3fa1f98a3)-->
 
 ## Dependency Tree(s)
 
@@ -49,18 +49,18 @@ Base graphviz file in dot format: [Trees of the direct dependencies](package-dep
 <!--[[[fill dependency_tree_console_text()]]]-->
 ````console
 foran==2022.12.7
-├── GitPython [required: >=3.1.29, installed: 3.1.29]
+├── GitPython [required: >=3.1.29, installed: 3.1.32]
 │   └── gitdb [required: >=4.0.1,<5, installed: 4.0.10]
 │       └── smmap [required: >=3.0.1,<6, installed: 5.0.0]
 └── typer [required: >=0.7.0, installed: 0.7.0]
-    └── click [required: >=7.1.1,<9.0.0, installed: 8.1.3]
+    └── click [required: >=7.1.1,<9.0.0, installed: 8.1.6]
 taksonomia==2022.12.7
-├── lxml [required: >=4.9.1, installed: 4.9.2]
-├── orjson [required: >=3.8.3, installed: 3.8.3]
-├── psutil [required: >=5.9.4, installed: 5.9.4]
+├── lxml [required: >=4.9.1, installed: 4.9.3]
+├── orjson [required: >=3.8.3, installed: 3.9.4]
+├── psutil [required: >=5.9.4, installed: 5.9.5]
 ├── py-cpuinfo [required: >=9.0.0, installed: 9.0.0]
 └── PyYAML [required: >=6.0, installed: 6.0]
 treelib==1.6.1
-└── future [required: Any, installed: 0.18.2]
+└── future [required: Any, installed: 0.18.3]
 ````
-<!--[[[end]]] (checksum: 52d948f509fd296a69fe29afb9037c1b)-->
+<!--[[[end]]] (checksum: 1c0980903f9d41702e835c9f90dac90a)-->
