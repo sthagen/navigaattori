@@ -7,7 +7,7 @@ Navigator (Finnish: navigaattori) guided by conventions.
 Third party dependencies are documented in the folder [third-party](third-party/README.md).
 
 [![version](https://img.shields.io/pypi/v/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
-[![downloads](https://pepy.tech/badge/navigaattori/month)](https://pepy.tech/project/navigaattori)
+[![downloads](https://static.pepy.tech/badge/navigaattori/month)](https://pepy.tech/project/navigaattori)
 [![wheel](https://img.shields.io/pypi/wheel/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
 [![supported-versions](https://img.shields.io/pypi/pyversions/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
 [![supported-implementations](https://img.shields.io/pypi/implementation/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
