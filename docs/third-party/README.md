@@ -1,8 +1,8 @@
 # Third Party Dependencies
 
 <!--[[[fill sbom_sha256()]]]-->
-The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([9936ba10 ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/etc/sbom/cdx.json.sha256 "sha256:9936ba10a79433e53eb6860f283f9bd7390b4cc14f71962586a76d9a1cfe3d63")).
-<!--[[[end]]] (checksum: aff70a13bac9831eac18016e9809cbad)-->
+The [SBOM in CycloneDX v1.4 JSON format](https://git.sr.ht/~sthagen/navigaattori/blob/default/etc/sbom/cdx.json) with SHA256 checksum ([e1fcddf5 ...](https://git.sr.ht/~sthagen/navigaattori/blob/default/etc/sbom/cdx.json.sha256 "sha256:e1fcddf558ec45ff40c9139c30b52cdeadfe02e8e548d2a55f5c5991fb078824")).
+<!--[[[end]]] (checksum: b3bca7ec5d765dc8035ec3ca90e1f491)-->
 ## Licenses 
 
 JSON files with complete license info of: [direct dependencies](direct-dependency-licenses.json) | [all dependencies](all-dependency-licenses.json)
@@ -22,17 +22,17 @@ JSON files with complete license info of: [direct dependencies](direct-dependenc
 ### Indirect Dependencies
 
 <!--[[[fill indirect_dependencies_table()]]]-->
-| Name                                                           | Version                                              | License     | Author                         | Description (from packaging data)                                                                |
-|:---------------------------------------------------------------|:-----------------------------------------------------|:------------|:-------------------------------|:-------------------------------------------------------------------------------------------------|
-| [GitPython](https://github.com/gitpython-developers/GitPython) | [3.1.32](https://pypi.org/project/GitPython/3.1.32/) | BSD License | Sebastian Thiel, Michael Trier | GitPython is a Python library used to interact with Git repositories                             |
-| [click](https://palletsprojects.com/p/click/)                  | [8.1.6](https://pypi.org/project/click/8.1.6/)       | BSD License | UNKNOWN                        | Composable command line interface toolkit                                                        |
-| [future](https://python-future.org)                            | [0.18.3](https://pypi.org/project/future/0.18.3/)    | MIT License | Ed Schofield                   | Clean single-source support for Python 3 and 2                                                   |
-| [gitdb](https://github.com/gitpython-developers/gitdb)         | [4.0.10](https://pypi.org/project/gitdb/4.0.10/)     | BSD License | Sebastian Thiel                | Git Object Database                                                                              |
-| [lxml](https://lxml.de/)                                       | [4.9.3](https://pypi.org/project/lxml/4.9.3/)        | BSD License | lxml dev team                  | Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API. |
-| [psutil](https://github.com/giampaolo/psutil)                  | [5.9.5](https://pypi.org/project/psutil/5.9.5/)      | BSD License | Giampaolo Rodola               | Cross-platform lib for process and system monitoring in Python.                                  |
-| [py-cpuinfo](https://github.com/workhorsy/py-cpuinfo)          | [9.0.0](https://pypi.org/project/py-cpuinfo/9.0.0/)  | MIT License | Matthew Brennan Jones          | Get CPU info with pure Python                                                                    |
-| [smmap](https://github.com/gitpython-developers/smmap)         | [5.0.0](https://pypi.org/project/smmap/5.0.0/)       | BSD License | Sebastian Thiel                | A pure Python implementation of a sliding window memory map manager                              |
-<!--[[[end]]] (checksum: a7023cd0d57face642d1b8c3fa1f98a3)-->
+| Name                                                           | Version                                              | License     | Author                                | Description (from packaging data)                                                                |
+|:---------------------------------------------------------------|:-----------------------------------------------------|:------------|:--------------------------------------|:-------------------------------------------------------------------------------------------------|
+| [GitPython](https://github.com/gitpython-developers/GitPython) | [3.1.37](https://pypi.org/project/GitPython/3.1.37/) | BSD License | Sebastian Thiel, Michael Trier        | GitPython is a Python library used to interact with Git repositories                             |
+| [click](https://palletsprojects.com/p/click/)                  | [8.1.6](https://pypi.org/project/click/8.1.6/)       | BSD License | Pallets <contact@palletsprojects.com> | Composable command line interface toolkit                                                        |
+| [future](https://python-future.org)                            | [0.18.3](https://pypi.org/project/future/0.18.3/)    | MIT License | Ed Schofield                          | Clean single-source support for Python 3 and 2                                                   |
+| [gitdb](https://github.com/gitpython-developers/gitdb)         | [4.0.10](https://pypi.org/project/gitdb/4.0.10/)     | BSD License | Sebastian Thiel                       | Git Object Database                                                                              |
+| [lxml](https://lxml.de/)                                       | [4.9.3](https://pypi.org/project/lxml/4.9.3/)        | BSD License | lxml dev team                         | Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API. |
+| [psutil](https://github.com/giampaolo/psutil)                  | [5.9.5](https://pypi.org/project/psutil/5.9.5/)      | BSD License | Giampaolo Rodola                      | Cross-platform lib for process and system monitoring in Python.                                  |
+| [py-cpuinfo](https://github.com/workhorsy/py-cpuinfo)          | [9.0.0](https://pypi.org/project/py-cpuinfo/9.0.0/)  | MIT License | Matthew Brennan Jones                 | Get CPU info with pure Python                                                                    |
+| [smmap](https://github.com/gitpython-developers/smmap)         | [5.0.0](https://pypi.org/project/smmap/5.0.0/)       | BSD License | Sebastian Thiel                       | A pure Python implementation of a sliding window memory map manager                              |
+<!--[[[end]]] (checksum: 3b3cf45f1bcdae68789bd579d887f0e4)-->
 
 ## Dependency Tree(s)
 
@@ -49,7 +49,7 @@ Base graphviz file in dot format: [Trees of the direct dependencies](package-dep
 <!--[[[fill dependency_tree_console_text()]]]-->
 ````console
 foran==2022.12.7
-├── GitPython [required: >=3.1.29, installed: 3.1.32]
+├── GitPython [required: >=3.1.29, installed: 3.1.37]
 │   └── gitdb [required: >=4.0.1,<5, installed: 4.0.10]
 │       └── smmap [required: >=3.0.1,<6, installed: 5.0.0]
 └── typer [required: >=0.7.0, installed: 0.7.0]
@@ -63,4 +63,4 @@ taksonomia==2022.12.7
 treelib==1.6.1
 └── future [required: Any, installed: 0.18.3]
 ````
-<!--[[[end]]] (checksum: 1c0980903f9d41702e835c9f90dac90a)-->
+<!--[[[end]]] (checksum: 6a79a9a4440e2c7e6985ae1b46324fd6)-->
