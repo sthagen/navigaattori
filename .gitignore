@@ -142,3 +142,4 @@ current-bandit.json
 # Local specific ignores
 inventory.*
 GUESSED_STRUCTURES
+book
