@@ -10,7 +10,7 @@ Navigator (Finnish: navigaattori) guided by conventions.
 [![Version](https://img.shields.io/pypi/v/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
 [![Downloads](https://static.pepy.tech/badge/navigaattori/month)](https://pepy.tech/project/navigaattori)
 [![Supported Versions](https://img.shields.io/pypi/pyversions/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)
-[![Maintenance Status](docs/badges/downloads-per-month.svg)](https://git.sr.ht/~sthagen/navigaattori/log)
+[![Maintenance Status](docs/badges/commits-per-year.svg)](https://git.sr.ht/~sthagen/navigaattori/log)
 
 ## Bug Tracker
 
