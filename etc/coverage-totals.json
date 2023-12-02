@@ -1,0 +1,18 @@
+{
+  "navigaattori": {
+    "version": "7.3.2",
+    "timestamp": "2023-12-02T15:27:43.219800",
+    "branch_coverage": true,
+    "show_contexts": true,
+    "covered_lines": 763,
+    "num_statements": 836,
+    "percent_covered": 89.70840480274443,
+    "percent_covered_display": "89.71",
+    "missing_lines": 73,
+    "excluded_lines": 1,
+    "num_branches": 330,
+    "num_partial_branches": 29,
+    "covered_branches": 283,
+    "missing_branches": 47
+  }
+}
