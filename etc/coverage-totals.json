@@ -1,7 +1,7 @@
 {
   "navigaattori": {
-    "version": "7.3.2",
-    "timestamp": "2023-12-02T15:27:43.219800",
+    "coverage_tool_version": "7.3.2",
+    "timestamp": "2023-12-02 16:26:01 +00:00",
     "branch_coverage": true,
     "show_contexts": true,
     "covered_lines": 763,
@@ -13,6 +13,33 @@
     "num_branches": 330,
     "num_partial_branches": 29,
     "covered_branches": 283,
-    "missing_branches": 47
+    "missing_branches": 47,
+    "node_id": "c79891e5-aabf-3a83-95b9-588edcd8327f",
+    "nfiles": 14,
+    "files": [
+      "navigaattori/__init__.py",
+      "navigaattori/api.py",
+      "navigaattori/approvals.py",
+      "navigaattori/bind.py",
+      "navigaattori/changes.py",
+      "navigaattori/cli.py",
+      "navigaattori/eject.py",
+      "navigaattori/fs.py",
+      "navigaattori/layout.py",
+      "navigaattori/liitos_meta.py",
+      "navigaattori/meta.py",
+      "navigaattori/structures.py",
+      "navigaattori/template_loader.py",
+      "navigaattori/vcs.py"
+    ],
+    "blake3": "1b2647138cddf8f9328f95f9f89ec34d0e1562e225683bf2ad5b4a01d48ce6f1",
+    "blake2": "3f79bbecb0c9005abf9bd7a4d25eae2c0a153e70d600c4a264c88d8c82f31bde83f20f9f635b43872ec4ce86ef4926f76d032c487f5bea7d90c864c1b40263cb",
+    "sha512": "61bedc325ad5ce9def17525cec5cdf12f3bf1ff3bdcb2771d7ce2450fd9d7a3704d96845a4ce7be5d36bca9ecbdeaaa394485221eb51ad6c4e01cda351dcebdd",
+    "sha384": "45f4349627d51a284152856da1552c0decee39c65cc68c0e7b3349e2f1b3970ef7593269e36fe8e72c97e1d5436fbf62",
+    "sha256": "030beced289b562a7029e79d462e7fb120ea2aec01ccd3fa26816ec01e7728bb",
+    "sha1": "5957b9f364ab71c6f2ad0efba7f70c63bb67616f",
+    "md5": "ba44e743f6cc8eba27bf37a86e9f8c17",
+    "python_version": "3.10.12",
+    "entropy": 4.563449
   }
 }
