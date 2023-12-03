@@ -33,7 +33,7 @@
     {
       "category": "3.10",
       "date": "2023-12",
-      "downloads": 8
+      "downloads": 16
     },
     {
       "category": "3.11",
@@ -68,7 +68,7 @@
     {
       "category": "3.11",
       "date": "2023-12",
-      "downloads": 8
+      "downloads": 16
     },
     {
       "category": "3.3",
@@ -81,6 +81,11 @@
       "downloads": 2
     },
     {
+      "category": "3.3",
+      "date": "2023-12",
+      "downloads": 4
+    },
+    {
       "category": "3.9",
       "date": "2023-11",
       "downloads": 2
@@ -88,7 +93,7 @@
     {
       "category": "null",
       "date": "2023-06",
-      "downloads": 88
+      "downloads": 76
     },
     {
       "category": "null",
