@@ -27,7 +27,7 @@
 <title>gitpython</title>
 <ellipse fill="none" stroke="black" cx="542.97" cy="-249.96" rx="50.56" ry="28.99"/>
 <text text-anchor="middle" x="542.97" y="-253.16" font-family="Times,serif" font-size="14.00">GitPython</text>
-<text text-anchor="middle" x="542.97" y="-236.66" font-family="Times,serif" font-size="14.00">3.1.37</text>
+<text text-anchor="middle" x="542.97" y="-236.66" font-family="Times,serif" font-size="14.00">3.1.40</text>
 </g>
 <!-- foran&#45;&gt;gitpython -->
 <g id="edge1" class="edge">
