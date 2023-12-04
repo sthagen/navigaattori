@@ -5,9 +5,9 @@
 Versions of navigaattori currently being supported with security updates.
 
 | Version(s)  | Supported |
-|:----------- |:--------- |
-| 2023.6.18   | yes       |
-| < 2023.6.18 | no        |
+|:------------|:----------|
+| 2023.12.4   | yes       |
+| < 2023.12.4 | no        |
 
 ## Reporting a Vulnerability
 
