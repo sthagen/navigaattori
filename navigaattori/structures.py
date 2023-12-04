@@ -37,7 +37,7 @@ class Structures:
         if not self.structures_path.is_file() or not self.structures_path.stat().st_size:
             self.state_message = f'structures file ({self.structures_path}) does not exist or is empty'
             if not self.guess:
-                log.error(self.state_message)
+                log.debug(self.state_message)
                 log.info(
                     '... you may want to try the --guess option to the explore command to bootstrap a structures file'
                 )
