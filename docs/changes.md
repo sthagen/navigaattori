@@ -1,5 +1,8 @@
 # Changes
 
+2023.12.4
+:    * Pushed the missing same folder structures file message down to debug level (<https://todo.sr.ht/~sthagen/navigaattori/4>)
+
 2023.6.18
 :    * Added layout control dimension from upstream (<https://todo.sr.ht/~sthagen/navigaattori/2>)
 * Moved SBOM noise into folder and added SPDX SBOM (derived) in multiple file formats 
