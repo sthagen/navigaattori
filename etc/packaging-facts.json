@@ -9,9 +9,10 @@
       "License :: OSI Approved :: MIT License",
       "Programming Language :: Python :: 3.10",
       "Programming Language :: Python :: 3.11",
-      "Programming Language :: Python :: 3.12"
+      "Programming Language :: Python :: 3.12",
+      "Programming Language :: Python :: 3.9"
     ],
-    "description": "# Navigaattori\n\nNavigator (Finnish: navigaattori) guided by conventions.\n\n[License: MIT](https://git.sr.ht/~sthagen/navigaattori/tree/default/item/LICENSE)\n\nThird party dependencies are documented in the folder [third-party](docs/third-party/README.md).\n\n[![version](https://img.shields.io/pypi/v/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)\n[![downloads](https://pepy.tech/badge/navigaattori/month)](https://pepy.tech/project/navigaattori)\n[![wheel](https://img.shields.io/pypi/wheel/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)\n[![supported-versions](https://img.shields.io/pypi/pyversions/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)\n[![supported-implementations](https://img.shields.io/pypi/implementation/navigaattori.svg?style=flat)](https://pypi.python.org/pypi/navigaattori/)\n\n## Documentation\n\nUser and developer [documentation of navigaattori](https://codes.dilettant.life/docs/navigaattori).\n\n## Bug Tracker\n\nAny feature requests or bug reports shall go to the [todos of navigaattori](https://todo.sr.ht/~sthagen/navigaattori).\n\n## Primary Source repository\n\nThe main source of `navigaattori` is on a mountain in central Switzerland.\nWe use distributed version control (git).\nThere is no central hub.\nEvery clone can become a new source for the benefit of all.\nThe preferred public clones of `navigaattori` are:\n\n* [on codeberg](https://codeberg.org/sthagen/navigaattori) - a democratic community-driven, non-profit software development platform operated by Codeberg e.V.\n* [at sourcehut](https://git.sr.ht/~sthagen/navigaattori) - a collection of tools useful for software development.\n\n## Contributions\n\nPlease do not submit \"pull requests\" (I found no way to disable that \"feature\" on GitHub).\nIf you like to share small changes under the repositories license please kindly do so by sending a patchset.\nYou can either send such a patchset per email using [git send-email](https://git-send-email.io) or \nif you are a sourcehut user by selecting \"Prepare a patchset\" on the summary page of your fork at [sourcehut](https://git.sr.ht/).\n\n# Status\n\nExperimental.\n\n**Note**: The default branch is `default`. \n",
+    "description": "# Navigaattori\n\nNavigator (Finnish: navigaattori) guided by conventions.\n\n[![License](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/license-spdx-mit.svg)](https://git.sr.ht/~sthagen/navigaattori/tree/default/item/LICENSE)\n[![Country of Origin](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/country-of-origin-name-switzerland-neutral.svg)](https://git.sr.ht/~sthagen/navigaattori/tree/default/item/COUNTRY-OF-ORIGIN)\n[![Export Classification Control Number (ECCN)](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/export-control-classification-number_eccn-ear99-neutral.svg)](https://git.sr.ht/~sthagen/navigaattori/tree/default/item/EXPORT-CONTROL-CLASSIFICATION-NUMBER)\n[![Configuration](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/configuration-sbom.svg)](https://git.sr.ht/~sthagen/navigaattori/tree/default/item/docs/third-party/README.md)\n\n[![Version](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/latest-release.svg)](https://pypi.python.org/pypi/navigaattori/)\n[![Downloads](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/downloads-per-month.svg)](https://pepy.tech/project/navigaattori)\n[![Python](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/python-versions.svg)](https://pypi.python.org/pypi/navigaattori/)\n[![Maintenance Status](https://git.sr.ht/~sthagen/navigaattori/blob/default/docs/badges/commits-per-year.svg)](https://git.sr.ht/~sthagen/navigaattori/log)\n\n## Documentation\n\nUser and developer [documentation of navigaattori](https://codes.dilettant.life/docs/navigaattori).\n\n## Bug Tracker\n\nAny feature requests or bug reports shall go to the [todos of navigaattori](https://todo.sr.ht/~sthagen/navigaattori).\n\n## Primary Source repository\n\nThe main source of `navigaattori` is on a mountain in central Switzerland.\nWe use distributed version control (git).\nThere is no central hub.\nEvery clone can become a new source for the benefit of all.\nThe preferred public clones of `navigaattori` are:\n\n* [on codeberg](https://codeberg.org/sthagen/navigaattori) - a democratic community-driven, non-profit software development platform operated by Codeberg e.V.\n* [at sourcehut](https://git.sr.ht/~sthagen/navigaattori) - a collection of tools useful for software development.\n\n## Contributions\n\nPlease do not submit \"pull requests\" (I found no way to disable that \"feature\" on GitHub).\nIf you like to share small changes under the repositories license please kindly do so by sending a patchset.\nYou can either send such a patchset per email using [git send-email](https://git-send-email.io) or \nif you are a sourcehut user by selecting \"Prepare a patchset\" on the summary page of your fork at [sourcehut](https://git.sr.ht/).\n\n## Support\n\nPlease kindly submit issues at https://todo.sr.ht/~sthagen/navigaattori or write plain text email to ~sthagen/navigaattori@lists.sr.ht to submit patches and request support. Thanks.\n\n# Status\n\nExperimental.\n\n**Note**: The default branch is `default`. \n",
     "description_content_type": "text/markdown",
     "docs_url": null,
     "download_url": "",
@@ -36,13 +37,13 @@
       "Source-Code": "https://git.sr.ht/~sthagen/navigaattori",
       "Test-Coverage": "https://codes.dilettant.life/coverage/navigaattori"
     },
-    "release_url": "https://pypi.org/project/navigaattori/2023.6.18/",
+    "release_url": "https://pypi.org/project/navigaattori/2023.12.4/",
     "requires_dist": [
-      "PyYAML (>=6.0)",
-      "foran (>=2022.12.7)",
-      "taksonomia (>=2022.12.7)",
-      "treelib (>=1.6.1)",
-      "typer (>=0.7.0)",
+      "PyYAML >=6.0",
+      "foran >=2022.12.7",
+      "taksonomia >=2022.12.7",
+      "treelib >=1.6.1",
+      "typer >=0.7.0",
       "black ; extra == 'dev'",
       "coverage ; extra == 'dev'",
       "hypothesis ; extra == 'dev'",
@@ -52,13 +53,13 @@
       "pytest-flake8 ; extra == 'dev'",
       "ruff ; extra == 'dev'"
     ],
-    "requires_python": ">=3.10",
+    "requires_python": ">=3.9",
     "summary": "Navigator (Finnish: navigaattori) guided by conventions.",
-    "version": "2023.6.18",
+    "version": "2023.12.4",
     "yanked": false,
     "yanked_reason": null
   },
-  "last_serial": 18548778,
+  "last_serial": 20910749,
   "releases": {
     "2022.12.10": [
       {
@@ -324,6 +325,50 @@
         "yanked_reason": null
       }
     ],
+    "2023.12.4": [
+      {
+        "comment_text": "",
+        "digests": {
+          "blake2b_256": "973422f8e4281e37784b8cdc7c6377d340a5f497879b8443f13b93e7b50edb91",
+          "md5": "f03721ead2cc1e5d758e08ed81adb8a2",
+          "sha256": "775ed4ec6da9cd9791dd681fea52ec0e2c41434e15654eba1c64c52aa33a03e3"
+        },
+        "downloads": -1,
+        "filename": "navigaattori-2023.12.4-py3-none-any.whl",
+        "has_sig": false,
+        "md5_digest": "f03721ead2cc1e5d758e08ed81adb8a2",
+        "packagetype": "bdist_wheel",
+        "python_version": "py3",
+        "requires_python": ">=3.9",
+        "size": 22630,
+        "upload_time": "2023-12-04T21:13:35",
+        "upload_time_iso_8601": "2023-12-04T21:13:35.919016Z",
+        "url": "https://files.pythonhosted.org/packages/97/34/22f8e4281e37784b8cdc7c6377d340a5f497879b8443f13b93e7b50edb91/navigaattori-2023.12.4-py3-none-any.whl",
+        "yanked": false,
+        "yanked_reason": null
+      },
+      {
+        "comment_text": "",
+        "digests": {
+          "blake2b_256": "ded7e6af1bc044c608da1261b53c4b4e9727d6e3d9d76567b2bf87b483a5d313",
+          "md5": "d796afe92cde303dcfb84c46d5c8cd78",
+          "sha256": "0cf32370313b41a28d62795a7fbb6a1d1aacb60e81a49cd38da5916120b9e856"
+        },
+        "downloads": -1,
+        "filename": "navigaattori-2023.12.4.tar.gz",
+        "has_sig": false,
+        "md5_digest": "d796afe92cde303dcfb84c46d5c8cd78",
+        "packagetype": "sdist",
+        "python_version": "source",
+        "requires_python": ">=3.9",
+        "size": 21519,
+        "upload_time": "2023-12-04T21:13:38",
+        "upload_time_iso_8601": "2023-12-04T21:13:38.154027Z",
+        "url": "https://files.pythonhosted.org/packages/de/d7/e6af1bc044c608da1261b53c4b4e9727d6e3d9d76567b2bf87b483a5d313/navigaattori-2023.12.4.tar.gz",
+        "yanked": false,
+        "yanked_reason": null
+      }
+    ],
     "2023.6.18": [
       {
         "comment_text": "",
@@ -373,42 +418,42 @@
     {
       "comment_text": "",
       "digests": {
-        "blake2b_256": "dec8be7166f4520b115c1d115b48545ef1fe47539a7421fdff0a2a4c8fe5d068",
-        "md5": "5a2962abb1fb682cc73c3e459e28dcba",
-        "sha256": "0f64672cbd0695445249548853c5d82b038d03bdfa98d0d50b3b794978ea8036"
+        "blake2b_256": "973422f8e4281e37784b8cdc7c6377d340a5f497879b8443f13b93e7b50edb91",
+        "md5": "f03721ead2cc1e5d758e08ed81adb8a2",
+        "sha256": "775ed4ec6da9cd9791dd681fea52ec0e2c41434e15654eba1c64c52aa33a03e3"
       },
       "downloads": -1,
-      "filename": "navigaattori-2023.6.18-py3-none-any.whl",
+      "filename": "navigaattori-2023.12.4-py3-none-any.whl",
       "has_sig": false,
-      "md5_digest": "5a2962abb1fb682cc73c3e459e28dcba",
+      "md5_digest": "f03721ead2cc1e5d758e08ed81adb8a2",
       "packagetype": "bdist_wheel",
       "python_version": "py3",
-      "requires_python": ">=3.10",
-      "size": 22337,
-      "upload_time": "2023-06-18T08:45:11",
-      "upload_time_iso_8601": "2023-06-18T08:45:11.734825Z",
-      "url": "https://files.pythonhosted.org/packages/de/c8/be7166f4520b115c1d115b48545ef1fe47539a7421fdff0a2a4c8fe5d068/navigaattori-2023.6.18-py3-none-any.whl",
+      "requires_python": ">=3.9",
+      "size": 22630,
+      "upload_time": "2023-12-04T21:13:35",
+      "upload_time_iso_8601": "2023-12-04T21:13:35.919016Z",
+      "url": "https://files.pythonhosted.org/packages/97/34/22f8e4281e37784b8cdc7c6377d340a5f497879b8443f13b93e7b50edb91/navigaattori-2023.12.4-py3-none-any.whl",
       "yanked": false,
       "yanked_reason": null
     },
     {
       "comment_text": "",
       "digests": {
-        "blake2b_256": "beb94dfcf28daca698107653149b423a6bbc1eb616339caa43b56a6eba5d9436",
-        "md5": "f596bbcd37ea2350bfcfec6241ecaf1d",
-        "sha256": "b1a7b71da3007c694da1bafb253d82ead0dafc2eb0fdb1bccdb771ece38f44ec"
+        "blake2b_256": "ded7e6af1bc044c608da1261b53c4b4e9727d6e3d9d76567b2bf87b483a5d313",
+        "md5": "d796afe92cde303dcfb84c46d5c8cd78",
+        "sha256": "0cf32370313b41a28d62795a7fbb6a1d1aacb60e81a49cd38da5916120b9e856"
       },
       "downloads": -1,
-      "filename": "navigaattori-2023.6.18.tar.gz",
+      "filename": "navigaattori-2023.12.4.tar.gz",
       "has_sig": false,
-      "md5_digest": "f596bbcd37ea2350bfcfec6241ecaf1d",
+      "md5_digest": "d796afe92cde303dcfb84c46d5c8cd78",
       "packagetype": "sdist",
       "python_version": "source",
-      "requires_python": ">=3.10",
-      "size": 20858,
-      "upload_time": "2023-06-18T08:45:13",
-      "upload_time_iso_8601": "2023-06-18T08:45:13.253281Z",
-      "url": "https://files.pythonhosted.org/packages/be/b9/4dfcf28daca698107653149b423a6bbc1eb616339caa43b56a6eba5d9436/navigaattori-2023.6.18.tar.gz",
+      "requires_python": ">=3.9",
+      "size": 21519,
+      "upload_time": "2023-12-04T21:13:38",
+      "upload_time_iso_8601": "2023-12-04T21:13:38.154027Z",
+      "url": "https://files.pythonhosted.org/packages/de/d7/e6af1bc044c608da1261b53c4b4e9727d6e3d9d76567b2bf87b483a5d313/navigaattori-2023.12.4.tar.gz",
       "yanked": false,
       "yanked_reason": null
     }
