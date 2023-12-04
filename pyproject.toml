@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "navigaattori"
-version = "2023.6.18"
+version = "2023.12.4"
 description = "Navigator (Finnish: navigaattori) guided by conventions."
 readme = "README.md"
 authors = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
