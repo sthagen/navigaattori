@@ -1,7 +1,7 @@
 {
   "navigaattori": {
     "coverage_tool_version": "7.3.2",
-    "timestamp": "2023-12-03 11:51:18 +00:00",
+    "timestamp": "2023-12-04 22:46:06 +00:00",
     "branch_coverage": true,
     "show_contexts": true,
     "covered_lines": 763,
@@ -32,14 +32,14 @@
       "navigaattori/template_loader.py",
       "navigaattori/vcs.py"
     ],
-    "blake3": "1b2647138cddf8f9328f95f9f89ec34d0e1562e225683bf2ad5b4a01d48ce6f1",
-    "blake2": "3f79bbecb0c9005abf9bd7a4d25eae2c0a153e70d600c4a264c88d8c82f31bde83f20f9f635b43872ec4ce86ef4926f76d032c487f5bea7d90c864c1b40263cb",
-    "sha512": "61bedc325ad5ce9def17525cec5cdf12f3bf1ff3bdcb2771d7ce2450fd9d7a3704d96845a4ce7be5d36bca9ecbdeaaa394485221eb51ad6c4e01cda351dcebdd",
-    "sha384": "45f4349627d51a284152856da1552c0decee39c65cc68c0e7b3349e2f1b3970ef7593269e36fe8e72c97e1d5436fbf62",
-    "sha256": "030beced289b562a7029e79d462e7fb120ea2aec01ccd3fa26816ec01e7728bb",
-    "sha1": "5957b9f364ab71c6f2ad0efba7f70c63bb67616f",
-    "md5": "ba44e743f6cc8eba27bf37a86e9f8c17",
+    "blake3": "460a1838e2081ae95a23e41c2a1a08e71bcff96dc5373ad99ac4415f1dd53471",
+    "blake2": "04912f65f19228cac1997b14b6d05af8f2539fa9a959390803d03f4d7dd8cfb30d6c305823d50745c889b8153a18a7aaa1d3772dfb4bf5466edf714c6ce56f24",
+    "sha512": "eb1d510b7cfa6816f48f9cb5af9779d2ff3177533377961f5038232e10566c7a3bcf06fdbc95c3b8a65148f80cdc106b1d1c1ffcb61c489e215a1015a1299fe3",
+    "sha384": "fe0333aee7964224d8784aa225f8507e7bdadb0a4e5002418bc2baf141cb23039000790db73f4b67947e348c88e43b31",
+    "sha256": "e1794068ca7f4486c209d83fd00578c5fce47bb15794737e9332590bb1183ced",
+    "sha1": "b3ab2e4c2c23fa3b8928ae285176463a7a4dc3f1",
+    "md5": "cfe9fa448f3753263970642eeb1d3f59",
     "python_version": "3.10.12",
-    "entropy": 4.563449
+    "entropy": 4.563932
   }
 }
