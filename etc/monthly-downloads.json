@@ -2,11 +2,6 @@
   "data": [
     {
       "category": "3.10",
-      "date": "2023-06",
-      "downloads": 1
-    },
-    {
-      "category": "3.10",
       "date": "2023-07",
       "downloads": 8
     },
@@ -33,12 +28,7 @@
     {
       "category": "3.10",
       "date": "2023-12",
-      "downloads": 222
-    },
-    {
-      "category": "3.11",
-      "date": "2023-06",
-      "downloads": 1
+      "downloads": 230
     },
     {
       "category": "3.11",
@@ -68,7 +58,7 @@
     {
       "category": "3.11",
       "date": "2023-12",
-      "downloads": 219
+      "downloads": 227
     },
     {
       "category": "3.3",
@@ -118,7 +108,7 @@
     {
       "category": "null",
       "date": "2023-12",
-      "downloads": 108
+      "downloads": 109
     }
   ],
   "package": "navigaattori",
