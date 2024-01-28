@@ -7,6 +7,7 @@ name = "navigaattori"
 version = "2023.12.4"
 description = "Navigator (Finnish: navigaattori) guided by conventions."
 readme = "README.md"
+license = {file = "LICENSE"}
 authors = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
 maintainers = [{ name = "Stefan Hagen", email = "stefan@hagen.link" }]
 classifiers = [
