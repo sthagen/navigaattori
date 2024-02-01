@@ -28,12 +28,12 @@
     {
       "category": "3.10",
       "date": "2024-01",
-      "downloads": 245
+      "downloads": 261
     },
     {
       "category": "3.11",
       "date": "2023-08",
-      "downloads": 28
+      "downloads": 26
     },
     {
       "category": "3.11",
@@ -58,12 +58,12 @@
     {
       "category": "3.11",
       "date": "2024-01",
-      "downloads": 234
+      "downloads": 250
     },
     {
       "category": "3.12",
       "date": "2024-01",
-      "downloads": 186
+      "downloads": 202
     },
     {
       "category": "3.3",
@@ -113,7 +113,7 @@
     {
       "category": "null",
       "date": "2024-01",
-      "downloads": 44
+      "downloads": 47
     }
   ],
   "package": "navigaattori",
