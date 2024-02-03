@@ -1,4 +1,5 @@
 """Eject templates and configurations."""
+
 import pathlib
 
 import navigaattori.template_loader as template

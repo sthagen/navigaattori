@@ -152,7 +152,7 @@ class Structures:
                             if not erv or not (self.fs_root / spec['dir'] / erv).is_file():
                                 if erfk == 'layout':
                                     log.info(
-                                        f'  + optional ({erfk}) resource is ({erv}) for facet ({fk}) of target ({target})'
+                                        f'  + optional ({erfk}) resource is ({erv}) for facet ({fk}) of target ({target})'  # noqa
                                         f' with target type ({target_type}) - resource does not exist or is no file'
                                     )
                                 else:

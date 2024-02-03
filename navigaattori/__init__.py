@@ -1,4 +1,5 @@
 """Navigator (Finnish: navigaattori) guided by conventions."""
+
 import datetime as dti
 import logging
 import os
