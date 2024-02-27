@@ -21,6 +21,7 @@
       "last_month": -1,
       "last_week": -1
     },
+    "dynamic": null,
     "home_page": "",
     "keywords": "developer-tools,validation,verification",
     "license": "",
@@ -37,6 +38,7 @@
       "Source-Code": "https://git.sr.ht/~sthagen/navigaattori",
       "Test-Coverage": "https://codes.dilettant.life/coverage/navigaattori"
     },
+    "provides_extra": null,
     "release_url": "https://pypi.org/project/navigaattori/2023.12.4/",
     "requires_dist": [
       "PyYAML >=6.0",
