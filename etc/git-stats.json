@@ -1,25 +1,37 @@
 {
   "total": {
-    "commits": 2107,
+    "commits": 2111,
     "first_committed_at": "2022-12-10T16:44:53+00:00",
-    "last_committed_at": "2024-07-15T03:09:14+00:00",
-    "month_span_day_count": 582,
-    "year_span": 1.5945205479452054,
-    "commits_per_year": 1321,
-    "insertions_per_year": 15970.945017182132,
-    "deletions_per_year": 6012.465635738832,
-    "lines_per_year": 21983.410652920964,
-    "files_per_year": 1536.512027491409,
-    "insertions_count": 25466,
-    "deletions_count": 9587,
-    "lines_count": 35053,
-    "files_count": 2450,
-    "insertions_avg": 12.086378737541528,
-    "deletions_avg": 4.550071191267205,
-    "lines_avg": 16.636449928808734,
-    "files_avg": 1.1627906976744187
+    "last_committed_at": "2024-07-17T00:57:06+00:00",
+    "month_span_day_count": 584,
+    "year_span": 1.6,
+    "commits_per_year": 1319,
+    "insertions_per_year": 15924.375,
+    "deletions_per_year": 6000.0,
+    "lines_per_year": 21924.375,
+    "files_per_year": 1533.125,
+    "insertions_count": 25479,
+    "deletions_count": 9600,
+    "lines_count": 35079,
+    "files_count": 2453,
+    "insertions_avg": 12.069635243960208,
+    "deletions_avg": 4.547607768829939,
+    "lines_avg": 16.617243012790148,
+    "files_avg": 1.1620085267645666
   },
   "commit_stats": {
+    "2024-07-17T00:57:06+00:00": {
+      "insertions": 1,
+      "deletions": 1,
+      "lines": 2,
+      "files": 1
+    },
+    "2024-07-16T11:03:37+00:00": {
+      "insertions": 12,
+      "deletions": 12,
+      "lines": 24,
+      "files": 2
+    },
     "2024-07-15T03:09:14+00:00": {
       "insertions": 1,
       "deletions": 1,
@@ -14358,6 +14370,20 @@
       "files": 4
     },
     "2024-07-15": {
+      "commits": 1,
+      "insertions": 1,
+      "deletions": 1,
+      "lines": 2,
+      "files": 1
+    },
+    "2024-07-16": {
+      "commits": 1,
+      "insertions": 12,
+      "deletions": 12,
+      "lines": 24,
+      "files": 2
+    },
+    "2024-07-17": {
       "commits": 1,
       "insertions": 1,
       "deletions": 1,
