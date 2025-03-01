@@ -2,11 +2,6 @@
   "data": [
     {
       "category": "3.10",
-      "date": "2024-08",
-      "downloads": 32
-    },
-    {
-      "category": "3.10",
       "date": "2024-09",
       "downloads": 246
     },
@@ -33,12 +28,7 @@
     {
       "category": "3.10",
       "date": "2025-02",
-      "downloads": 216
-    },
-    {
-      "category": "3.11",
-      "date": "2024-08",
-      "downloads": 32
+      "downloads": 225
     },
     {
       "category": "3.11",
@@ -68,12 +58,7 @@
     {
       "category": "3.11",
       "date": "2025-02",
-      "downloads": 208
-    },
-    {
-      "category": "3.12",
-      "date": "2024-08",
-      "downloads": 32
+      "downloads": 216
     },
     {
       "category": "3.12",
@@ -103,17 +88,12 @@
     {
       "category": "3.12",
       "date": "2025-02",
-      "downloads": 215
+      "downloads": 223
     },
     {
       "category": "3.13",
       "date": "2025-01",
       "downloads": 2
-    },
-    {
-      "category": "3.9",
-      "date": "2024-08",
-      "downloads": 7
     },
     {
       "category": "3.9",
@@ -124,11 +104,6 @@
       "category": "3.9",
       "date": "2024-11",
       "downloads": 2
-    },
-    {
-      "category": "null",
-      "date": "2024-08",
-      "downloads": 1
     },
     {
       "category": "null",
@@ -158,7 +133,7 @@
     {
       "category": "null",
       "date": "2025-02",
-      "downloads": 200
+      "downloads": 210
     }
   ],
   "package": "navigaattori",
